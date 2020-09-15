@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Starry Code</title><link href="https://starrycode.github.io/" rel="alternate"></link><link href="https://starrycode.github.io/feeds/all-en.atom.xml" rel="self"></link><id>https://starrycode.github.io/</id><updated>2019-12-16T00:00:00-06:00</updated><subtitle>Coding with STARS</subtitle><entry><title>Multicollinearity: Concept, Effects, Detection, Remedies and Exceptions in Python</title><link href="https://starrycode.github.io/multicollinearity_concept_effects_detection_remedies_and_exceptions_in_python" rel="alternate"></link><published>2019-12-16T00:00:00-06:00</published><updated>2019-12-16T00:00:00-06:00</updated><author><name>VIOLET OH</name></author><id>tag:starrycode.github.io,2019-12-16:/multicollinearity_concept_effects_detection_remedies_and_exceptions_in_python</id><summary type="html">&lt;style type="text/css"&gt;/*!
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Starry Code</title><link href="/" rel="alternate"></link><link href="/feeds/all-en.atom.xml" rel="self"></link><id>/</id><updated>2019-12-16T00:00:00-06:00</updated><subtitle>Coding with STARS</subtitle><entry><title>Multicollinearity: Concept, Effects, Detection, Remedies and Exceptions in Python</title><link href="/multicollinearity_concept_effects_detection_remedies_and_exceptions_in_python" rel="alternate"></link><published>2019-12-16T00:00:00-06:00</published><updated>2019-12-16T00:00:00-06:00</updated><author><name>VIOLET OH</name></author><id>tag:None,2019-12-16:/multicollinearity_concept_effects_detection_remedies_and_exceptions_in_python</id><summary type="html">&lt;style type="text/css"&gt;/*!
 *
 * IPython notebook
 *
@@ -16051,7 +16051,7 @@ Y-intercept             :  -2003.01
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</content><category term="Machine Learning"></category><category term="Monte-Carlo"></category><category term="correlation"></category><category term="machine learning"></category><category term="multiple linear regression"></category><category term="multicollinearity"></category><category term="linear regression"></category><category term="regression"></category><category term="feature ranking"></category><category term="permutation feature ranking"></category><category term="r-squared"></category><category term="model"></category><category term="3d"></category><category term="visualization"></category><category term="features"></category><category term="data exploration"></category></entry><entry><title>Multiple Linear Regression and Visualization in Python</title><link href="https://starrycode.github.io/mutiple_linear_regression_and_visualization_in_python" rel="alternate"></link><published>2019-11-18T00:00:00-06:00</published><updated>2019-11-18T00:00:00-06:00</updated><author><name>VIOLET OH</name></author><id>tag:starrycode.github.io,2019-11-18:/mutiple_linear_regression_and_visualization_in_python</id><summary type="html">&lt;style type="text/css"&gt;/*!
+&lt;/script&gt;</content><category term="Machine Learning"></category><category term="Monte-Carlo"></category><category term="correlation"></category><category term="machine learning"></category><category term="multiple linear regression"></category><category term="multicollinearity"></category><category term="linear regression"></category><category term="regression"></category><category term="feature ranking"></category><category term="permutation feature ranking"></category><category term="r-squared"></category><category term="model"></category><category term="3d"></category><category term="visualization"></category><category term="features"></category><category term="data exploration"></category></entry><entry><title>Multiple Linear Regression and Visualization in Python</title><link href="/mutiple_linear_regression_and_visualization_in_python" rel="alternate"></link><published>2019-11-18T00:00:00-06:00</published><updated>2019-11-18T00:00:00-06:00</updated><author><name>VIOLET OH</name></author><id>tag:None,2019-11-18:/mutiple_linear_regression_and_visualization_in_python</id><summary type="html">&lt;style type="text/css"&gt;/*!
 *
 * IPython notebook
 *
@@ -18264,10 +18264,10 @@ $$ \text{Gas Prod.} = 287.78 \cdot \text{Por} - 2.94 \tag{4}$$
 &lt;div class="output"&gt;
 &lt;div class="output_area"&gt;
 &lt;div class="prompt"&gt;&lt;/div&gt;
-&lt;div id="7a3f514e-8773-4eb9-ac76-4f70c5ca8a5c"&gt;&lt;/div&gt;
+&lt;div id="46d8de32-fc9d-462d-9b6b-12403b721f40"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript"&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#7a3f514e-8773-4eb9-ac76-4f70c5ca8a5c');
+var element = $('#46d8de32-fc9d-462d-9b6b-12403b721f40');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -19748,7 +19748,7 @@ $$ \text{Gas Prod.} = 244.6 \cdot \text{Por} + 31.6 \cdot \text{Brittle} + 86.9 
         "}); ";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</content><category term="Machine Learning"></category><category term="correlation"></category><category term="machine learning"></category><category term="multiple linear regression"></category><category term="multicollinearity"></category><category term="linear regression"></category><category term="regression"></category><category term="feature ranking"></category><category term="permutation feature ranking"></category><category term="r-squared"></category><category term="model"></category><category term="3d"></category><category term="visualization"></category><category term="features"></category><category term="data exploration"></category></entry><entry><title>Spatial Simulation 1: Basics of Variograms</title><link href="https://starrycode.github.io/spatial-simulation-1-basics-of-variograms" rel="alternate"></link><published>2019-02-06T00:00:00-06:00</published><updated>2019-02-06T00:00:00-06:00</updated><author><name>VIOLET OH</name></author><id>tag:starrycode.github.io,2019-02-06:/spatial-simulation-1-basics-of-variograms</id><summary type="html">&lt;style type="text/css"&gt;/*!
+&lt;/script&gt;</content><category term="Machine Learning"></category><category term="correlation"></category><category term="machine learning"></category><category term="multiple linear regression"></category><category term="multicollinearity"></category><category term="linear regression"></category><category term="regression"></category><category term="feature ranking"></category><category term="permutation feature ranking"></category><category term="r-squared"></category><category term="model"></category><category term="3d"></category><category term="visualization"></category><category term="features"></category><category term="data exploration"></category></entry><entry><title>Spatial Simulation 1: Basics of Variograms</title><link href="/spatial-simulation-1-basics-of-variograms" rel="alternate"></link><published>2019-02-06T00:00:00-06:00</published><updated>2019-02-06T00:00:00-06:00</updated><author><name>VIOLET OH</name></author><id>tag:None,2019-02-06:/spatial-simulation-1-basics-of-variograms</id><summary type="html">&lt;style type="text/css"&gt;/*!
 *
 * IPython notebook
 *

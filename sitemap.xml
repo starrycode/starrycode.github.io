@@ -4,189 +4,189 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitem
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>https://starrycode.github.io/</loc>
-<lastmod>2020-09-13T21:22:18-00:00</lastmod>
+<loc>/</loc>
+<lastmod>2020-09-15T01:22:10-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://starrycode.github.io/archives.html</loc>
-<lastmod>2020-09-13T21:22:18-00:00</lastmod>
+<loc>/archives.html</loc>
+<lastmod>2020-09-15T01:22:10-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://starrycode.github.io/multicollinearity_concept_effects_detection_remedies_and_exceptions_in_python</loc>
+<loc>/multicollinearity_concept_effects_detection_remedies_and_exceptions_in_python</loc>
 <lastmod>2019-12-16T00:00:00-06:00</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://starrycode.github.io/mutiple_linear_regression_and_visualization_in_python</loc>
+<loc>/mutiple_linear_regression_and_visualization_in_python</loc>
 <lastmod>2019-11-18T00:00:00-06:00</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://starrycode.github.io/spatial-simulation-1-basics-of-variograms</loc>
+<loc>/spatial-simulation-1-basics-of-variograms</loc>
 <lastmod>2019-02-06T00:00:00-06:00</lastmod>
 <changefreq>hourly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://starrycode.github.io/category/geostatistics.html</loc>
+<loc>/category/geostatistics.html</loc>
 <lastmod>2019-02-06T00:00:00-05:51</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://starrycode.github.io/category/machine-learning.html</loc>
+<loc>/category/machine-learning.html</loc>
 <lastmod>2019-12-16T00:00:00-05:51</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://starrycode.github.io/tag/monte-carlo.html</loc>
+<loc>/tag/monte-carlo.html</loc>
 <lastmod>2019-12-16T00:00:00-05:51</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://starrycode.github.io/tag/correlation.html</loc>
+<loc>/tag/correlation.html</loc>
 <lastmod>2019-12-16T00:00:00-05:51</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://starrycode.github.io/tag/machine-learning.html</loc>
+<loc>/tag/machine-learning.html</loc>
 <lastmod>2019-12-16T00:00:00-05:51</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://starrycode.github.io/tag/multiple-linear-regression.html</loc>
+<loc>/tag/multiple-linear-regression.html</loc>
 <lastmod>2019-12-16T00:00:00-05:51</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://starrycode.github.io/tag/multicollinearity.html</loc>
+<loc>/tag/multicollinearity.html</loc>
 <lastmod>2019-12-16T00:00:00-05:51</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://starrycode.github.io/tag/linear-regression.html</loc>
+<loc>/tag/linear-regression.html</loc>
 <lastmod>2019-12-16T00:00:00-05:51</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://starrycode.github.io/tag/regression.html</loc>
+<loc>/tag/regression.html</loc>
 <lastmod>2019-12-16T00:00:00-05:51</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://starrycode.github.io/tag/feature-ranking.html</loc>
+<loc>/tag/feature-ranking.html</loc>
 <lastmod>2019-12-16T00:00:00-05:51</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://starrycode.github.io/tag/permutation-feature-ranking.html</loc>
+<loc>/tag/permutation-feature-ranking.html</loc>
 <lastmod>2019-12-16T00:00:00-05:51</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://starrycode.github.io/tag/r-squared.html</loc>
+<loc>/tag/r-squared.html</loc>
 <lastmod>2019-12-16T00:00:00-05:51</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://starrycode.github.io/tag/model.html</loc>
+<loc>/tag/model.html</loc>
 <lastmod>2019-12-16T00:00:00-05:51</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://starrycode.github.io/tag/3d.html</loc>
+<loc>/tag/3d.html</loc>
 <lastmod>2019-12-16T00:00:00-05:51</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://starrycode.github.io/tag/visualization.html</loc>
+<loc>/tag/visualization.html</loc>
 <lastmod>2019-12-16T00:00:00-05:51</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://starrycode.github.io/tag/features.html</loc>
+<loc>/tag/features.html</loc>
 <lastmod>2019-12-16T00:00:00-05:51</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://starrycode.github.io/tag/data-exploration.html</loc>
+<loc>/tag/data-exploration.html</loc>
 <lastmod>2019-12-16T00:00:00-05:51</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://starrycode.github.io/tag/geostatistics.html</loc>
+<loc>/tag/geostatistics.html</loc>
 <lastmod>2019-02-06T00:00:00-05:51</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://starrycode.github.io/tag/variogram.html</loc>
+<loc>/tag/variogram.html</loc>
 <lastmod>2019-02-06T00:00:00-05:51</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://starrycode.github.io/tag/simulation.html</loc>
+<loc>/tag/simulation.html</loc>
 <lastmod>2019-02-06T00:00:00-05:51</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://starrycode.github.io/tag/spatial.html</loc>
+<loc>/tag/spatial.html</loc>
 <lastmod>2019-02-06T00:00:00-05:51</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://starrycode.github.io/tag/2d.html</loc>
+<loc>/tag/2d.html</loc>
 <lastmod>2019-02-06T00:00:00-05:51</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
