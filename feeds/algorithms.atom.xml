@@ -1,0 +1,2792 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Starry Code - Algorithms</title><link href="https://starrycode.github.io/" rel="alternate"></link><link href="https://starrycode.github.io/feeds/algorithms.atom.xml" rel="self"></link><id>https://starrycode.github.io/</id><updated>2020-09-01T00:00:00-05:00</updated><subtitle>Coding with STARS</subtitle><entry><title>Visual Understanding of Insertion Sort Algorithm</title><link href="https://starrycode.github.io/visual-understanding-of-insertion-sort-algorithm" rel="alternate"></link><published>2020-09-01T00:00:00-05:00</published><updated>2020-09-01T00:00:00-05:00</updated><author><name>VIOLET OH</name></author><id>tag:starrycode.github.io,2020-09-01:/visual-understanding-of-insertion-sort-algorithm</id><summary type="html">&lt;style type="text/css"&gt;/*!
+*
+* IPython notebook
+*
+*/
+/* CSS font colors for translated ANSI escape sequences */
+/* The color values are a mix of
+   http://www.xcolors.net/dl/baskerville-ivorylight and
+   http://www.xcolors.net/dl/euphrasia */
+.ansi-black-fg {
+  color: #3E424D;
+}
+.ansi-black-bg {
+  background-color: #3E424D;
+}
+.ansi-black-intense-fg {
+  color: #282C36;
+}
+.ansi-black-intense-bg {
+  background-color: #282C36;
+}
+.ansi-red-fg {
+  color: #E75C58;
+}
+.ansi-red-bg {
+  background-color: #E75C58;
+}
+.ansi-red-intense-fg {
+  color …&lt;/style&gt;</summary><content type="html">&lt;style type="text/css"&gt;/*!
+*
+* IPython notebook
+*
+*/
+/* CSS font colors for translated ANSI escape sequences */
+/* The color values are a mix of
+   http://www.xcolors.net/dl/baskerville-ivorylight and
+   http://www.xcolors.net/dl/euphrasia */
+.ansi-black-fg {
+  color: #3E424D;
+}
+.ansi-black-bg {
+  background-color: #3E424D;
+}
+.ansi-black-intense-fg {
+  color: #282C36;
+}
+.ansi-black-intense-bg {
+  background-color: #282C36;
+}
+.ansi-red-fg {
+  color: #E75C58;
+}
+.ansi-red-bg {
+  background-color: #E75C58;
+}
+.ansi-red-intense-fg {
+  color: #B22B31;
+}
+.ansi-red-intense-bg {
+  background-color: #B22B31;
+}
+.ansi-green-fg {
+  color: #00A250;
+}
+.ansi-green-bg {
+  background-color: #00A250;
+}
+.ansi-green-intense-fg {
+  color: #007427;
+}
+.ansi-green-intense-bg {
+  background-color: #007427;
+}
+.ansi-yellow-fg {
+  color: #DDB62B;
+}
+.ansi-yellow-bg {
+  background-color: #DDB62B;
+}
+.ansi-yellow-intense-fg {
+  color: #B27D12;
+}
+.ansi-yellow-intense-bg {
+  background-color: #B27D12;
+}
+.ansi-blue-fg {
+  color: #208FFB;
+}
+.ansi-blue-bg {
+  background-color: #208FFB;
+}
+.ansi-blue-intense-fg {
+  color: #0065CA;
+}
+.ansi-blue-intense-bg {
+  background-color: #0065CA;
+}
+.ansi-magenta-fg {
+  color: #D160C4;
+}
+.ansi-magenta-bg {
+  background-color: #D160C4;
+}
+.ansi-magenta-intense-fg {
+  color: #A03196;
+}
+.ansi-magenta-intense-bg {
+  background-color: #A03196;
+}
+.ansi-cyan-fg {
+  color: #60C6C8;
+}
+.ansi-cyan-bg {
+  background-color: #60C6C8;
+}
+.ansi-cyan-intense-fg {
+  color: #258F8F;
+}
+.ansi-cyan-intense-bg {
+  background-color: #258F8F;
+}
+.ansi-white-fg {
+  color: #C5C1B4;
+}
+.ansi-white-bg {
+  background-color: #C5C1B4;
+}
+.ansi-white-intense-fg {
+  color: #A1A6B2;
+}
+.ansi-white-intense-bg {
+  background-color: #A1A6B2;
+}
+.ansi-default-inverse-fg {
+  color: #FFFFFF;
+}
+.ansi-default-inverse-bg {
+  background-color: #000000;
+}
+.ansi-bold {
+  font-weight: bold;
+}
+.ansi-underline {
+  text-decoration: underline;
+}
+/* The following styles are deprecated an will be removed in a future version */
+.ansibold {
+  font-weight: bold;
+}
+.ansi-inverse {
+  outline: 0.5px dotted;
+}
+/* use dark versions for foreground, to improve visibility */
+.ansiblack {
+  color: black;
+}
+.ansired {
+  color: darkred;
+}
+.ansigreen {
+  color: darkgreen;
+}
+.ansiyellow {
+  color: #c4a000;
+}
+.ansiblue {
+  color: darkblue;
+}
+.ansipurple {
+  color: darkviolet;
+}
+.ansicyan {
+  color: steelblue;
+}
+.ansigray {
+  color: gray;
+}
+/* and light for background, for the same reason */
+.ansibgblack {
+  background-color: black;
+}
+.ansibgred {
+  background-color: red;
+}
+.ansibggreen {
+  background-color: green;
+}
+.ansibgyellow {
+  background-color: yellow;
+}
+.ansibgblue {
+  background-color: blue;
+}
+.ansibgpurple {
+  background-color: magenta;
+}
+.ansibgcyan {
+  background-color: cyan;
+}
+.ansibggray {
+  background-color: gray;
+}
+div.cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border-radius: 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  width: 100%;
+  padding: 5px;
+  /* This acts as a spacer between cells, that is outside the border */
+  margin: 0px;
+  outline: none;
+  position: relative;
+  overflow: visible;
+}
+div.cell:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: transparent;
+}
+div.cell.jupyter-soft-selected {
+  border-left-color: #E3F2FD;
+  border-left-width: 1px;
+  padding-left: 5px;
+  border-right-color: #E3F2FD;
+  border-right-width: 1px;
+  background: #E3F2FD;
+}
+@media print {
+  div.cell.jupyter-soft-selected {
+    border-color: transparent;
+  }
+}
+div.cell.selected,
+div.cell.selected.jupyter-soft-selected {
+  border-color: #ababab;
+}
+div.cell.selected:before,
+div.cell.selected.jupyter-soft-selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #42A5F5;
+}
+@media print {
+  div.cell.selected,
+  div.cell.selected.jupyter-soft-selected {
+    border-color: transparent;
+  }
+}
+.edit_mode div.cell.selected {
+  border-color: #66BB6A;
+}
+.edit_mode div.cell.selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #66BB6A;
+}
+@media print {
+  .edit_mode div.cell.selected {
+    border-color: transparent;
+  }
+}
+.prompt {
+  /* This needs to be wide enough for 3 digit prompt numbers: In[100]: */
+  min-width: 14ex;
+  /* This padding is tuned to match the padding on the CodeMirror editor. */
+  padding: 0.4em;
+  margin: 0px;
+  font-family: monospace;
+  text-align: right;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+  /* Don't highlight prompt number selection */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Use default cursor */
+  cursor: default;
+}
+@media (max-width: 540px) {
+  .prompt {
+    text-align: left;
+  }
+}
+div.inner_cell {
+  min-width: 0;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_area {
+  border: 1px solid #cfcfcf;
+  border-radius: 2px;
+  background: #f7f7f7;
+  line-height: 1.21429em;
+}
+/* This is needed so that empty prompt areas can collapse to zero height when there
+   is no content in the output_subarea and the prompt. The main purpose of this is
+   to make sure that empty JavaScript output_subareas have no height. */
+div.prompt:empty {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+div.unrecognized_cell {
+  padding: 5px 5px 5px 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.unrecognized_cell .inner_cell {
+  border-radius: 2px;
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+  border: 1px solid #cfcfcf;
+  background: #eaeaea;
+}
+div.unrecognized_cell .inner_cell a {
+  color: inherit;
+  text-decoration: none;
+}
+div.unrecognized_cell .inner_cell a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+@media (max-width: 540px) {
+  div.unrecognized_cell &gt; div.prompt {
+    display: none;
+  }
+}
+div.code_cell {
+  /* avoid page breaking on code cells when printing */
+}
+@media print {
+  div.code_cell {
+    page-break-inside: avoid;
+  }
+}
+/* any special styling for code cells that are currently running goes here */
+div.input {
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.input {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_prompt {
+  color: #303F9F;
+  border-top: 1px solid transparent;
+}
+div.input_area &gt; div.highlight {
+  margin: 0.4em;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+div.input_area &gt; div.highlight &gt; pre {
+  margin: 0px;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+/* The following gets added to the &lt;head&gt; if it is detected that the user has a
+ * monospace font with inconsistent normal/bold/italic height.  See
+ * notebookmain.js.  Such fonts will have keywords vertically offset with
+ * respect to the rest of the text.  The user should select a better font.
+ * See: https://github.com/ipython/ipython/issues/1503
+ *
+ * .CodeMirror span {
+ *      vertical-align: bottom;
+ * }
+ */
+.CodeMirror {
+  line-height: 1.21429em;
+  /* Changed from 1em to our global default */
+  font-size: 14px;
+  height: auto;
+  /* Changed to auto to autogrow */
+  background: none;
+  /* Changed from white to allow our bg to show through */
+}
+.CodeMirror-scroll {
+  /*  The CodeMirror docs are a bit fuzzy on if overflow-y should be hidden or visible.*/
+  /*  We have found that if it is visible, vertical scrollbars appear with font size changes.*/
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.CodeMirror-lines {
+  /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
+  /* we have set a different line-height and want this to scale with that. */
+  /* Note that this should set vertical padding only, since CodeMirror assumes
+       that horizontal padding will be set on CodeMirror pre */
+  padding: 0.4em 0;
+}
+.CodeMirror-linenumber {
+  padding: 0 8px 0 4px;
+}
+.CodeMirror-gutters {
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+}
+.CodeMirror pre {
+  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
+    use .CodeMirror-lines for vertical */
+  padding: 0 0.4em;
+  border: 0;
+  border-radius: 0;
+}
+.CodeMirror-cursor {
+  border-left: 1.4px solid black;
+}
+@media screen and (min-width: 2138px) and (max-width: 4319px) {
+  .CodeMirror-cursor {
+    border-left: 2px solid black;
+  }
+}
+@media screen and (min-width: 4320px) {
+  .CodeMirror-cursor {
+    border-left: 4px solid black;
+  }
+}
+/*
+
+Original style from softwaremaniacs.org (c) Ivan Sagalaev &lt;Maniac@SoftwareManiacs.Org&gt;
+Adapted from GitHub theme
+
+*/
+.highlight-base {
+  color: #000;
+}
+.highlight-variable {
+  color: #000;
+}
+.highlight-variable-2 {
+  color: #1a1a1a;
+}
+.highlight-variable-3 {
+  color: #333333;
+}
+.highlight-string {
+  color: #BA2121;
+}
+.highlight-comment {
+  color: #408080;
+  font-style: italic;
+}
+.highlight-number {
+  color: #080;
+}
+.highlight-atom {
+  color: #88F;
+}
+.highlight-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.highlight-builtin {
+  color: #008000;
+}
+.highlight-error {
+  color: #f00;
+}
+.highlight-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.highlight-meta {
+  color: #AA22FF;
+}
+/* previously not defined, copying from default codemirror */
+.highlight-def {
+  color: #00f;
+}
+.highlight-string-2 {
+  color: #f50;
+}
+.highlight-qualifier {
+  color: #555;
+}
+.highlight-bracket {
+  color: #997;
+}
+.highlight-tag {
+  color: #170;
+}
+.highlight-attribute {
+  color: #00c;
+}
+.highlight-header {
+  color: blue;
+}
+.highlight-quote {
+  color: #090;
+}
+.highlight-link {
+  color: #00c;
+}
+/* apply the same style to codemirror */
+.cm-s-ipython span.cm-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-atom {
+  color: #88F;
+}
+.cm-s-ipython span.cm-number {
+  color: #080;
+}
+.cm-s-ipython span.cm-def {
+  color: #00f;
+}
+.cm-s-ipython span.cm-variable {
+  color: #000;
+}
+.cm-s-ipython span.cm-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-variable-2 {
+  color: #1a1a1a;
+}
+.cm-s-ipython span.cm-variable-3 {
+  color: #333333;
+}
+.cm-s-ipython span.cm-comment {
+  color: #408080;
+  font-style: italic;
+}
+.cm-s-ipython span.cm-string {
+  color: #BA2121;
+}
+.cm-s-ipython span.cm-string-2 {
+  color: #f50;
+}
+.cm-s-ipython span.cm-meta {
+  color: #AA22FF;
+}
+.cm-s-ipython span.cm-qualifier {
+  color: #555;
+}
+.cm-s-ipython span.cm-builtin {
+  color: #008000;
+}
+.cm-s-ipython span.cm-bracket {
+  color: #997;
+}
+.cm-s-ipython span.cm-tag {
+  color: #170;
+}
+.cm-s-ipython span.cm-attribute {
+  color: #00c;
+}
+.cm-s-ipython span.cm-header {
+  color: blue;
+}
+.cm-s-ipython span.cm-quote {
+  color: #090;
+}
+.cm-s-ipython span.cm-link {
+  color: #00c;
+}
+.cm-s-ipython span.cm-error {
+  color: #f00;
+}
+.cm-s-ipython span.cm-tab {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAMCAYAAAAkuj5RAAAAAXNSR0IArs4c6QAAAGFJREFUSMft1LsRQFAQheHPowAKoACx3IgEKtaEHujDjORSgWTH/ZOdnZOcM/sgk/kFFWY0qV8foQwS4MKBCS3qR6ixBJvElOobYAtivseIE120FaowJPN75GMu8j/LfMwNjh4HUpwg4LUAAAAASUVORK5CYII=);
+  background-position: right;
+  background-repeat: no-repeat;
+}
+div.output_wrapper {
+  /* this position must be relative to enable descendents to be absolute within it */
+  position: relative;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  z-index: 1;
+}
+/* class for the output area when it should be height-limited */
+div.output_scroll {
+  /* ideally, this would be max-height, but FF barfs all over that */
+  height: 24em;
+  /* FF needs this *and the wrapper* to specify full width, or it will shrinkwrap */
+  width: 100%;
+  overflow: auto;
+  border-radius: 2px;
+  -webkit-box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  display: block;
+}
+/* output div while it is collapsed */
+div.output_collapsed {
+  margin: 0px;
+  padding: 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+div.out_prompt_overlay {
+  height: 100%;
+  padding: 0px 0.4em;
+  position: absolute;
+  border-radius: 2px;
+}
+div.out_prompt_overlay:hover {
+  /* use inner shadow to get border that is computed the same on WebKit/FF */
+  -webkit-box-shadow: inset 0 0 1px #000;
+  box-shadow: inset 0 0 1px #000;
+  background: rgba(240, 240, 240, 0.5);
+}
+div.output_prompt {
+  color: #D84315;
+}
+/* This class is the outer container of all output sections. */
+div.output_area {
+  padding: 0px;
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.output_area .MathJax_Display {
+  text-align: left !important;
+}
+div.output_area 
+div.output_area 
+div.output_area img,
+div.output_area svg {
+  max-width: 100%;
+  height: auto;
+}
+div.output_area img.unconfined,
+div.output_area svg.unconfined {
+  max-width: none;
+}
+div.output_area .mglyph &gt; img {
+  max-width: none;
+}
+/* This is needed to protect the pre formating from global settings such
+   as that of bootstrap */
+.output {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.output_area {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+div.output_area pre {
+  margin: 0;
+  padding: 1px 0 1px 0;
+  border: 0;
+  vertical-align: baseline;
+  color: black;
+  background-color: transparent;
+  border-radius: 0;
+}
+/* This class is for the output subarea inside the output_area and after
+   the prompt div. */
+div.output_subarea {
+  overflow-x: auto;
+  padding: 0.4em;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+  max-width: calc(100% - 14ex);
+}
+div.output_scroll div.output_subarea {
+  overflow-x: visible;
+}
+/* The rest of the output_* classes are for special styling of the different
+   output types */
+/* all text output has this class: */
+div.output_text {
+  text-align: left;
+  color: #000;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+}
+/* stdout/stderr are 'text' as well as 'stream', but execute_result/error are *not* streams */
+div.output_stderr {
+  background: #fdd;
+  /* very light red background for stderr */
+}
+div.output_latex {
+  text-align: left;
+}
+/* Empty output_javascript divs should have no height */
+div.output_javascript:empty {
+  padding: 0;
+}
+.js-error {
+  color: darkred;
+}
+/* raw_input styles */
+div.raw_input_container {
+  line-height: 1.21429em;
+  padding-top: 5px;
+}
+pre.raw_input_prompt {
+  /* nothing needed here. */
+}
+input.raw_input {
+  font-family: monospace;
+  font-size: inherit;
+  color: inherit;
+  width: auto;
+  /* make sure input baseline aligns with prompt */
+  vertical-align: baseline;
+  /* padding + margin = 0.5em between prompt and cursor */
+  padding: 0em 0.25em;
+  margin: 0em 0.25em;
+}
+input.raw_input:focus {
+  box-shadow: none;
+}
+p.p-space {
+  margin-bottom: 10px;
+}
+div.output_unrecognized {
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+}
+div.output_unrecognized a {
+  color: inherit;
+  text-decoration: none;
+}
+div.output_unrecognized a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+.rendered_html {
+  color: #000;
+  /* any extras will just be numbers: */
+}
+
+
+
+.rendered_html :link {
+  text-decoration: underline;
+}
+.rendered_html :visited {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+.rendered_html h1:first-child {
+  margin-top: 0.538em;
+}
+.rendered_html h2:first-child {
+  margin-top: 0.636em;
+}
+.rendered_html h3:first-child {
+  margin-top: 0.777em;
+}
+.rendered_html h4:first-child {
+  margin-top: 1em;
+}
+.rendered_html h5:first-child {
+  margin-top: 1em;
+}
+.rendered_html h6:first-child {
+  margin-top: 1em;
+}
+.rendered_html ul:not(.list-inline),
+.rendered_html ol:not(.list-inline) {
+  padding-left: 2em;
+}
+
+
+
+
+
+
+
+
+.rendered_html * + ul {
+  margin-top: 1em;
+}
+.rendered_html * + ol {
+  margin-top: 1em;
+}
+
+
+
+
+
+.rendered_html pre,
+
+
+
+
+.rendered_html tr,
+.rendered_html th,
+
+
+.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+.rendered_html * + table {
+  margin-top: 1em;
+}
+
+.rendered_html * + p {
+  margin-top: 1em;
+}
+
+.rendered_html * + img {
+  margin-top: 1em;
+}
+.rendered_html img,
+
+.rendered_html img.unconfined,
+
+
+.rendered_html * + .alert {
+  margin-top: 1em;
+}
+[dir="rtl"] 
+div.text_cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.text_cell &gt; div.prompt {
+    display: none;
+  }
+}
+div.text_cell_render {
+  /*font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;*/
+  outline: none;
+  resize: none;
+  width: inherit;
+  border-style: none;
+  padding: 0.5em 0.5em 0.5em 0.4em;
+  color: #000;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+a.anchor-link:link {
+  text-decoration: none;
+  padding: 0px 20px;
+  visibility: hidden;
+}
+h1:hover .anchor-link,
+h2:hover .anchor-link,
+h3:hover .anchor-link,
+h4:hover .anchor-link,
+h5:hover .anchor-link,
+h6:hover .anchor-link {
+  visibility: visible;
+}
+.text_cell.rendered .input_area {
+  display: none;
+}
+.text_cell.rendered 
+.text_cell.rendered .rendered_html tr,
+.text_cell.rendered .rendered_html th,
+.text_cell.rendered 
+.text_cell.unrendered .text_cell_render {
+  display: none;
+}
+.text_cell .dropzone .input_area {
+  border: 2px dashed #bababa;
+  margin: -1px;
+}
+.cm-header-1,
+.cm-header-2,
+.cm-header-3,
+.cm-header-4,
+.cm-header-5,
+.cm-header-6 {
+  font-weight: bold;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.cm-header-1 {
+  font-size: 185.7%;
+}
+.cm-header-2 {
+  font-size: 157.1%;
+}
+.cm-header-3 {
+  font-size: 128.6%;
+}
+.cm-header-4 {
+  font-size: 110%;
+}
+.cm-header-5 {
+  font-size: 100%;
+  font-style: italic;
+}
+.cm-header-6 {
+  font-size: 100%;
+  font-style: italic;
+}
+&lt;/style&gt;
+&lt;style type="text/css"&gt;.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f8f8f8; }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */&lt;/style&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;blockquote&gt;&lt;p&gt;In computer science, a &lt;strong&gt;sorting algorithm&lt;/strong&gt; is an algorithm that puts elements of a list in a certain order. Efficient sorting is important for optimizing the efficiency of other algorithms (such as search and merge algorithms) that require input data to be in sorted lists. Sorting is also often useful for &lt;a href="https://en.wikipedia.org/wiki/Canonicalization" target="_blank"&gt;canonicalizing&lt;/a&gt; data and for producing human-readable output. - From &lt;a href="https://en.wikipedia.org/wiki/Multicollinearity" target="_blank"&gt;Wikipedia&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;There are many sorting algorithms. One of the most important factor when choosing which sorting algorithm to use is its algorithm complexity, represented in Big-O notations. &lt;a href="#figure-1"&gt;Figure (1)&lt;/a&gt; summarizes the the algorithm complexity of various sorting methods. Note that &lt;span style="font-size: 90% !important"&gt;$N$&lt;/span&gt; is is an array size, &lt;span style="font-size: 90% !important"&gt;$O$&lt;/span&gt; is the worst-case scenario, &lt;span style="font-size: 90% !important"&gt;$\Omega$&lt;/span&gt; is the best-case scenario, and &lt;span style="font-size: 90% !important"&gt;$\theta$&lt;/span&gt; is the average-case scenario. This post focuses on &lt;strong&gt;Insertion Sort&lt;/strong&gt;.&lt;/p&gt;
+&lt;div class="row" id="fig-1" style="margin-top: 15px;"&gt;
+&lt;div class="col"&gt;&lt;img src="jupyter_images/sorting_all_complexities_insertion.png"/&gt;&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 1: Algorithm complexities and their efficiencies&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;div id="toc_container"&gt;
+&lt;p class="toc_title"&gt;Contents&lt;/p&gt;
+&lt;ul class="toc_list"&gt;
+&lt;li&gt;&lt;a href="#Insertion Sort"&gt;&lt;span class="toc_label"&gt;1&lt;/span&gt;Insertion Sort&lt;/a&gt;&lt;/li&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#Understanding Insertion Sort"&gt;&lt;span class="toc_label"&gt;1.1&lt;/span&gt;Understanding Insertion Sort&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#Code Implementation"&gt;&lt;span class="toc_label"&gt;1.2&lt;/span&gt;Code Implementation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;div id="Insertion Sort"&gt;&lt;/div&gt;&lt;h2 id="1.-Insertion-Sort"&gt;1. Insertion Sort&lt;a class="anchor-link" href="#1.-Insertion-Sort"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Insertion sort is an in-place comparison-based algorithm. In the best case scenario, in which the array is nearly-sorted, it has &lt;span style="font-size: 90% !important"&gt;$O(N)$&lt;/span&gt; time complexity. In the worst case scenario, in which the array is reserve-sorted, it has &lt;span style="font-size: 90% !important"&gt;$O(N^2)$&lt;/span&gt; time complexity, according to &lt;a href="#fig-1"&gt;figure (1)&lt;/a&gt;. It has the following pros and cons:&lt;/p&gt;
+&lt;div&gt;&lt;hr/&gt;&lt;/div&gt;&lt;p&gt;&lt;a id="pros"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Pros&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;When array size is small, insertion sort is faster than divide-and-conquer algorithms (quicksort, mergesort, heapsort), because they have extra overhead from the recursive function calls.&lt;/li&gt;
+&lt;li&gt;If data is almost sorted, it can be very fast, approaching &lt;span style="font-size: 90% !important"&gt;$O(N)$&lt;/span&gt; time complexity&lt;/li&gt;
+&lt;li&gt;In-place; i.e., only requires a constant amount of &lt;span style="font-size: 90% !important"&gt;$O(1)$&lt;/span&gt; of additional memory space&lt;/li&gt;
+&lt;li&gt;More efficient in practice than most other simple quadratic &lt;span style="font-size: 90% !important"&gt;$O(N^2)$&lt;/span&gt;  algorithms such as selection or bubble sort.&lt;/li&gt;
+&lt;li&gt;Simple and easy to implement&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;a id="cons"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Cons&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Bad for large data sets due to its quadratic nature &lt;span style="font-size: 90% !important"&gt;$O(N^2)$&lt;/span&gt;. &lt;/li&gt;
+&lt;li&gt;Writes more than selection sort &lt;span style="font-size: 90% !important"&gt;$O(1)$&lt;/span&gt;, whereas insertion is &lt;span style="font-size: 90% !important"&gt;$O(N^2)$&lt;/span&gt;. &lt;/li&gt;
+&lt;/ol&gt;
+&lt;div&gt;&lt;hr/&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;div id="Understanding Insertion Sort"&gt;&lt;/div&gt;&lt;h3 id="1.1.-Understanding-Insertion-Sort"&gt;1.1. Understanding Insertion Sort&lt;a class="anchor-link" href="#1.1.-Understanding-Insertion-Sort"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Insertion sort works in a similar way that you sort playing cards in your hands. The algorithm searchs an array sequentially, and elements in the unsorted sub-list is inserted into the sorted sub-list. Similar to selection sort, the algorithm divides the list into two parts:&lt;/p&gt;
+&lt;ol class="rounded-list" style="margin-bottom: 20px !important; margin-top: 20px! important;"&gt;
+&lt;li&gt;&lt;p&gt;The sub-list which is already sorted.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Remaining sub-list which is unsorted.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;p&gt;An element which is to be 'inserted' in this sorted sub-list, has to find its appropriate position to be inserted, by comparing itself to its predecessor. Hence the name, insertion sort. Note that &lt;strong&gt;insertion sort is very similar to selection sort&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Let's dive into the illustrations for better understanding of insertion sort. Imagine that you want to sort the books shown in &lt;a href="#fig-2"&gt;figure (2)&lt;/a&gt; in ascending order of sizes.&lt;/p&gt;
+&lt;div class="row full_screen_margin_50 mobile_responsive_plot_full_width" id="fig-2" style="margin-top: 15px;"&gt;
+&lt;div class="col"&gt;&lt;img src="jupyter_images/sorting_books_1.png"/&gt;&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 2: Books to sort&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;div&gt;&lt;hr/&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;1st Iteration&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Insertion sort divides a list into sorted &amp; unsorted sublists. The grey divider represents the split between sorted (left) vs unsorted (right) array. At the beginning, nothing is sorted. We move the divider one index to the right.&lt;/p&gt;
+&lt;div class="row" id="fig-3" style="margin-top: 15px;"&gt;
+&lt;div class="col"&gt;&lt;img src="jupyter_images/insertion_all_1.png"/&gt;&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 3: Insertion sort 1&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;div&gt;&lt;hr/&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;2nd Iteration&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;We compare book 2 (left) and book 6 (right) adjacent to the grey divider. If left &lt; right, which means that the books are already sorted, move the grey divider one index to the right. Anything on the left side of the divider is sorted. Anything on the right side of the divider is unsorted, and will be "inserted" into the appropriate index of the sorted sub-list.&lt;/p&gt;
+&lt;div class="row" id="fig-4"&gt;
+&lt;div class="col-md-6 col-sm-12"&gt;
+&lt;div class="col-12"&gt;&lt;img src="jupyter_images/insertion_4.png"/&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="col-md-6 col-sm-12"&gt;
+&lt;div class="col-12"&gt;&lt;img src="jupyter_images/insertion_5.png"/&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 4: Insertion sort 2&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;div&gt;&lt;hr/&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;3rd Iteration&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;We compare book 6 (left) and book 1 (right) adjacent to the grey divider. It turned out that the left item is greater than the right item. We take out the current unsorted item (right, book 1) and briefly keep it in the temporary storage (the hand icon), until it finds the appropriate index to be inserted.&lt;/p&gt;
+&lt;div class="row" id="fig-5"&gt;
+&lt;div class="col-md-6 col-sm-12"&gt;
+&lt;div class="col-12"&gt;&lt;img src="jupyter_images/insertion_6.png"/&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="col-md-6 col-sm-12"&gt;
+&lt;div class="col-12"&gt;&lt;img src="jupyter_images/insertion_7.png"/&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 5: Insertion sort 3&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;The books on the left side of the divider shifts to the right, until the current block (book 1) in the temporary storage finds its right position.&lt;/p&gt;
+&lt;div class="row" id="fig-6"&gt;
+&lt;div class="col-md-6 col-sm-12"&gt;
+&lt;div class="col-12"&gt;&lt;img src="jupyter_images/insertion_8.png"/&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="col-md-6 col-sm-12"&gt;
+&lt;div class="col-12"&gt;&lt;img src="jupyter_images/insertion_9.png"/&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 6: Insertion sort 4&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Once the current block's (book 1's) appropriate index is found, the block is inserted into that index. Once the left side is sorted again, move the grey divider one index to the right.&lt;/p&gt;
+&lt;div class="row" id="fig-7"&gt;
+&lt;div class="col-md-6 col-sm-12"&gt;
+&lt;div class="col-12"&gt;&lt;img src="jupyter_images/insertion_10.png"/&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="col-md-6 col-sm-12"&gt;
+&lt;div class="col-12"&gt;&lt;img src="jupyter_images/insertion_11.png"/&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 7: Insertion sort 5&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;div&gt;&lt;hr/&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;4th Iteration&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;We repeat the same steps from above.&lt;/p&gt;
+&lt;div class="row" id="fig-8"&gt;
+&lt;div class="col-md-6 col-sm-12"&gt;
+&lt;div class="col-12"&gt;&lt;img src="jupyter_images/insertion_12.png"/&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="col-md-6 col-sm-12"&gt;
+&lt;div class="col-12"&gt;&lt;img src="jupyter_images/insertion_13.png"/&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 8: Insertion sort 6&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;div class="row" id="fig-9"&gt;
+&lt;div class="col-md-6 col-sm-12"&gt;
+&lt;div class="col-12"&gt;&lt;img src="jupyter_images/insertion_14.png"/&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="col-md-6 col-sm-12"&gt;
+&lt;div class="col-12"&gt;&lt;img src="jupyter_images/insertion_15.png"/&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 9: Insertion sort 7&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;div class="row" id="fig-10"&gt;
+&lt;div class="col-md-6 col-sm-12"&gt;
+&lt;div class="col-12"&gt;&lt;img src="jupyter_images/insertion_16.png"/&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 10: Insertion sort 8&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;div&gt;&lt;hr/&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;5th Iteration&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="row" id="fig-11"&gt;
+&lt;div class="col-md-6 col-sm-12"&gt;
+&lt;div class="col-12"&gt;&lt;img src="jupyter_images/insertion_17.png"/&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="col-md-6 col-sm-12"&gt;
+&lt;div class="col-12"&gt;&lt;img src="jupyter_images/insertion_18.png"/&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 11: Insertion sort 9&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;div class="row" id="fig-12"&gt;
+&lt;div class="col-md-6 col-sm-12"&gt;
+&lt;div class="col-12"&gt;&lt;img src="jupyter_images/insertion_19.png"/&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="col-md-6 col-sm-12"&gt;
+&lt;div class="col-12"&gt;&lt;img src="jupyter_images/insertion_20.png"/&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 12: Insertion sort 10&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;div class="row" id="fig-13"&gt;
+&lt;div class="col-md-6 col-sm-12"&gt;
+&lt;div class="col-12"&gt;&lt;img src="jupyter_images/insertion_21.png"/&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="col-md-6 col-sm-12"&gt;
+&lt;div class="col-12"&gt;&lt;img src="jupyter_images/insertion_22.png"/&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 13: Insertion sort 11&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;div&gt;&lt;hr/&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;6th Iteration&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="row" id="fig-14"&gt;
+&lt;div class="col-md-6 col-sm-12"&gt;
+&lt;div class="col-12"&gt;&lt;img src="jupyter_images/insertion_23.png"/&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="col-md-6 col-sm-12"&gt;
+&lt;div class="col-12"&gt;&lt;img src="jupyter_images/insertion_24.png"/&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 14: Insertion sort 12&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;div class="row" id="fig-15"&gt;
+&lt;div class="col-md-6 col-sm-12"&gt;
+&lt;div class="col-12"&gt;&lt;img src="jupyter_images/insertion_25.png"/&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="col-md-6 col-sm-12"&gt;
+&lt;div class="col-12"&gt;&lt;img src="jupyter_images/insertion_26.png"/&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 15: Insertion sort 13&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;The grey divider reached the end and the books are now sorted.&lt;/p&gt;
+&lt;div class="row" id="fig-16"&gt;
+&lt;div class="col-md-6 col-sm-12"&gt;
+&lt;div class="col-12"&gt;&lt;img src="jupyter_images/insertion_27.png"/&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="col-md-6 col-sm-12"&gt;
+&lt;div class="col-12"&gt;&lt;img src="jupyter_images/insertion_28.png"/&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 16: Insertion sort 14&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;div&gt;&lt;hr/&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;div style="margin-top: -15px"&gt;&lt;/div&gt;&lt;p&gt;&lt;a href="#fig-17"&gt;Figure (17)&lt;/a&gt; is the gif represention of the insertion sort algorithm described above. Notice that the left side of the grey divider is a sorted sub-list, and right side of the divider is an unsorted sub-list. At the last iteration, the grey wall is at the end of the books, indicating the fact that all books are now sorted in an ascending order of sizes.&lt;/p&gt;
+&lt;div class="row full_screen_margin_60 mobile_responsive_plot_full_width" id="fig-17" style="margin-top: -10px;"&gt;
+&lt;div class="col"&gt;&lt;img src="jupyter_images/insertion_sort.gif"/&gt;&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 10: Insertion sort gif&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;div id="Code Implementation"&gt;&lt;/div&gt;&lt;h3 id="1.2.-Code-Implementation"&gt;1.2. Code Implementation&lt;a class="anchor-link" href="#1.2.-Code-Implementation"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;pre&gt;
+    &lt;code class="language-java"&gt;
+import java.util.Arrays;
+//@author: Violet Oh
+
+public class Insertion_Sort {
+    public static void main(String[] args) {
+        int[] array = {2, 6, 1, 5, 3, 4}; // The array we discussed.
+        System.out.println(Arrays.toString(array));
+        InsertionSort(array);
+        System.out.println(Arrays.toString(array));
+    }
+    public static void InsertionSort(int[] array) {
+        for(int i = 1; i &lt; array.length; ++i)   // Starts from the second element.
+        {
+            int temp = array[i];    // Save the second element to another variable, "temp".
+
+            int j;
+            for(j = i; j &gt; 0; --j)  // Shifts the elements until they are in order.
+            {
+                if(array[j-1] &gt; temp)   // Checks if the first element is NOT SMALLER than the second element.
+                {
+                    array[j] = array[j-1];      // If so, the first element gets shifted to right (index + 1).
+                }
+                else
+                {
+                    break;  // If the first element is SMALLER than the second element already, nothing happens.
+                }
+            }
+            array[j] = temp;    // The proper position for the element that was being compared with the element right before this.
+            System.out.println(Arrays.toString(array)); // Print it out to see the changes.
+        }
+    }
+}
+    &lt;/code&gt;
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;div class="output_wrapper" style="top: -20px;"&gt;
+&lt;div class="output"&gt;
+&lt;div class="output_area" style="margin: 0 !important;"&gt;
+&lt;div class="prompt output_prompt" style="width: 69.53px;"&gt;Out[24]:&lt;/div&gt;
+&lt;div class="output_text output_subarea output_execute_result"&gt;
+&lt;pre&gt;[2, 6, 1, 5, 3, 4]
+[2, 6, 1, 5, 3, 4]
+[1, 2, 6, 5, 3, 4]
+[1, 2, 5, 6, 3, 4]
+[1, 2, 3, 5, 6, 4]
+[1, 2, 3, 4, 5, 6]
+[1, 2, 3, 4, 5, 6]
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="Algorithms"></category><category term="algorithm"></category><category term="sorting"></category><category term="insertion sort"></category><category term="algorithm complexity"></category></entry><entry><title>Visual Understanding of Selection Sort Algorithm</title><link href="https://starrycode.github.io/visual-understanding-of-selection-sort-algorithm" rel="alternate"></link><published>2020-08-19T00:00:00-05:00</published><updated>2020-08-19T00:00:00-05:00</updated><author><name>VIOLET OH</name></author><id>tag:starrycode.github.io,2020-08-19:/visual-understanding-of-selection-sort-algorithm</id><summary type="html">&lt;style type="text/css"&gt;/*!
+*
+* IPython notebook
+*
+*/
+/* CSS font colors for translated ANSI escape sequences */
+/* The color values are a mix of
+   http://www.xcolors.net/dl/baskerville-ivorylight and
+   http://www.xcolors.net/dl/euphrasia */
+.ansi-black-fg {
+  color: #3E424D;
+}
+.ansi-black-bg {
+  background-color: #3E424D;
+}
+.ansi-black-intense-fg {
+  color: #282C36;
+}
+.ansi-black-intense-bg {
+  background-color: #282C36;
+}
+.ansi-red-fg {
+  color: #E75C58;
+}
+.ansi-red-bg {
+  background-color: #E75C58;
+}
+.ansi-red-intense-fg {
+  color …&lt;/style&gt;</summary><content type="html">&lt;style type="text/css"&gt;/*!
+*
+* IPython notebook
+*
+*/
+/* CSS font colors for translated ANSI escape sequences */
+/* The color values are a mix of
+   http://www.xcolors.net/dl/baskerville-ivorylight and
+   http://www.xcolors.net/dl/euphrasia */
+.ansi-black-fg {
+  color: #3E424D;
+}
+.ansi-black-bg {
+  background-color: #3E424D;
+}
+.ansi-black-intense-fg {
+  color: #282C36;
+}
+.ansi-black-intense-bg {
+  background-color: #282C36;
+}
+.ansi-red-fg {
+  color: #E75C58;
+}
+.ansi-red-bg {
+  background-color: #E75C58;
+}
+.ansi-red-intense-fg {
+  color: #B22B31;
+}
+.ansi-red-intense-bg {
+  background-color: #B22B31;
+}
+.ansi-green-fg {
+  color: #00A250;
+}
+.ansi-green-bg {
+  background-color: #00A250;
+}
+.ansi-green-intense-fg {
+  color: #007427;
+}
+.ansi-green-intense-bg {
+  background-color: #007427;
+}
+.ansi-yellow-fg {
+  color: #DDB62B;
+}
+.ansi-yellow-bg {
+  background-color: #DDB62B;
+}
+.ansi-yellow-intense-fg {
+  color: #B27D12;
+}
+.ansi-yellow-intense-bg {
+  background-color: #B27D12;
+}
+.ansi-blue-fg {
+  color: #208FFB;
+}
+.ansi-blue-bg {
+  background-color: #208FFB;
+}
+.ansi-blue-intense-fg {
+  color: #0065CA;
+}
+.ansi-blue-intense-bg {
+  background-color: #0065CA;
+}
+.ansi-magenta-fg {
+  color: #D160C4;
+}
+.ansi-magenta-bg {
+  background-color: #D160C4;
+}
+.ansi-magenta-intense-fg {
+  color: #A03196;
+}
+.ansi-magenta-intense-bg {
+  background-color: #A03196;
+}
+.ansi-cyan-fg {
+  color: #60C6C8;
+}
+.ansi-cyan-bg {
+  background-color: #60C6C8;
+}
+.ansi-cyan-intense-fg {
+  color: #258F8F;
+}
+.ansi-cyan-intense-bg {
+  background-color: #258F8F;
+}
+.ansi-white-fg {
+  color: #C5C1B4;
+}
+.ansi-white-bg {
+  background-color: #C5C1B4;
+}
+.ansi-white-intense-fg {
+  color: #A1A6B2;
+}
+.ansi-white-intense-bg {
+  background-color: #A1A6B2;
+}
+.ansi-default-inverse-fg {
+  color: #FFFFFF;
+}
+.ansi-default-inverse-bg {
+  background-color: #000000;
+}
+.ansi-bold {
+  font-weight: bold;
+}
+.ansi-underline {
+  text-decoration: underline;
+}
+/* The following styles are deprecated an will be removed in a future version */
+.ansibold {
+  font-weight: bold;
+}
+.ansi-inverse {
+  outline: 0.5px dotted;
+}
+/* use dark versions for foreground, to improve visibility */
+.ansiblack {
+  color: black;
+}
+.ansired {
+  color: darkred;
+}
+.ansigreen {
+  color: darkgreen;
+}
+.ansiyellow {
+  color: #c4a000;
+}
+.ansiblue {
+  color: darkblue;
+}
+.ansipurple {
+  color: darkviolet;
+}
+.ansicyan {
+  color: steelblue;
+}
+.ansigray {
+  color: gray;
+}
+/* and light for background, for the same reason */
+.ansibgblack {
+  background-color: black;
+}
+.ansibgred {
+  background-color: red;
+}
+.ansibggreen {
+  background-color: green;
+}
+.ansibgyellow {
+  background-color: yellow;
+}
+.ansibgblue {
+  background-color: blue;
+}
+.ansibgpurple {
+  background-color: magenta;
+}
+.ansibgcyan {
+  background-color: cyan;
+}
+.ansibggray {
+  background-color: gray;
+}
+div.cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border-radius: 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  width: 100%;
+  padding: 5px;
+  /* This acts as a spacer between cells, that is outside the border */
+  margin: 0px;
+  outline: none;
+  position: relative;
+  overflow: visible;
+}
+div.cell:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: transparent;
+}
+div.cell.jupyter-soft-selected {
+  border-left-color: #E3F2FD;
+  border-left-width: 1px;
+  padding-left: 5px;
+  border-right-color: #E3F2FD;
+  border-right-width: 1px;
+  background: #E3F2FD;
+}
+@media print {
+  div.cell.jupyter-soft-selected {
+    border-color: transparent;
+  }
+}
+div.cell.selected,
+div.cell.selected.jupyter-soft-selected {
+  border-color: #ababab;
+}
+div.cell.selected:before,
+div.cell.selected.jupyter-soft-selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #42A5F5;
+}
+@media print {
+  div.cell.selected,
+  div.cell.selected.jupyter-soft-selected {
+    border-color: transparent;
+  }
+}
+.edit_mode div.cell.selected {
+  border-color: #66BB6A;
+}
+.edit_mode div.cell.selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #66BB6A;
+}
+@media print {
+  .edit_mode div.cell.selected {
+    border-color: transparent;
+  }
+}
+.prompt {
+  /* This needs to be wide enough for 3 digit prompt numbers: In[100]: */
+  min-width: 14ex;
+  /* This padding is tuned to match the padding on the CodeMirror editor. */
+  padding: 0.4em;
+  margin: 0px;
+  font-family: monospace;
+  text-align: right;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+  /* Don't highlight prompt number selection */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Use default cursor */
+  cursor: default;
+}
+@media (max-width: 540px) {
+  .prompt {
+    text-align: left;
+  }
+}
+div.inner_cell {
+  min-width: 0;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_area {
+  border: 1px solid #cfcfcf;
+  border-radius: 2px;
+  background: #f7f7f7;
+  line-height: 1.21429em;
+}
+/* This is needed so that empty prompt areas can collapse to zero height when there
+   is no content in the output_subarea and the prompt. The main purpose of this is
+   to make sure that empty JavaScript output_subareas have no height. */
+div.prompt:empty {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+div.unrecognized_cell {
+  padding: 5px 5px 5px 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.unrecognized_cell .inner_cell {
+  border-radius: 2px;
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+  border: 1px solid #cfcfcf;
+  background: #eaeaea;
+}
+div.unrecognized_cell .inner_cell a {
+  color: inherit;
+  text-decoration: none;
+}
+div.unrecognized_cell .inner_cell a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+@media (max-width: 540px) {
+  div.unrecognized_cell &gt; div.prompt {
+    display: none;
+  }
+}
+div.code_cell {
+  /* avoid page breaking on code cells when printing */
+}
+@media print {
+  div.code_cell {
+    page-break-inside: avoid;
+  }
+}
+/* any special styling for code cells that are currently running goes here */
+div.input {
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.input {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_prompt {
+  color: #303F9F;
+  border-top: 1px solid transparent;
+}
+div.input_area &gt; div.highlight {
+  margin: 0.4em;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+div.input_area &gt; div.highlight &gt; pre {
+  margin: 0px;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+/* The following gets added to the &lt;head&gt; if it is detected that the user has a
+ * monospace font with inconsistent normal/bold/italic height.  See
+ * notebookmain.js.  Such fonts will have keywords vertically offset with
+ * respect to the rest of the text.  The user should select a better font.
+ * See: https://github.com/ipython/ipython/issues/1503
+ *
+ * .CodeMirror span {
+ *      vertical-align: bottom;
+ * }
+ */
+.CodeMirror {
+  line-height: 1.21429em;
+  /* Changed from 1em to our global default */
+  font-size: 14px;
+  height: auto;
+  /* Changed to auto to autogrow */
+  background: none;
+  /* Changed from white to allow our bg to show through */
+}
+.CodeMirror-scroll {
+  /*  The CodeMirror docs are a bit fuzzy on if overflow-y should be hidden or visible.*/
+  /*  We have found that if it is visible, vertical scrollbars appear with font size changes.*/
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.CodeMirror-lines {
+  /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
+  /* we have set a different line-height and want this to scale with that. */
+  /* Note that this should set vertical padding only, since CodeMirror assumes
+       that horizontal padding will be set on CodeMirror pre */
+  padding: 0.4em 0;
+}
+.CodeMirror-linenumber {
+  padding: 0 8px 0 4px;
+}
+.CodeMirror-gutters {
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+}
+.CodeMirror pre {
+  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
+    use .CodeMirror-lines for vertical */
+  padding: 0 0.4em;
+  border: 0;
+  border-radius: 0;
+}
+.CodeMirror-cursor {
+  border-left: 1.4px solid black;
+}
+@media screen and (min-width: 2138px) and (max-width: 4319px) {
+  .CodeMirror-cursor {
+    border-left: 2px solid black;
+  }
+}
+@media screen and (min-width: 4320px) {
+  .CodeMirror-cursor {
+    border-left: 4px solid black;
+  }
+}
+/*
+
+Original style from softwaremaniacs.org (c) Ivan Sagalaev &lt;Maniac@SoftwareManiacs.Org&gt;
+Adapted from GitHub theme
+
+*/
+.highlight-base {
+  color: #000;
+}
+.highlight-variable {
+  color: #000;
+}
+.highlight-variable-2 {
+  color: #1a1a1a;
+}
+.highlight-variable-3 {
+  color: #333333;
+}
+.highlight-string {
+  color: #BA2121;
+}
+.highlight-comment {
+  color: #408080;
+  font-style: italic;
+}
+.highlight-number {
+  color: #080;
+}
+.highlight-atom {
+  color: #88F;
+}
+.highlight-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.highlight-builtin {
+  color: #008000;
+}
+.highlight-error {
+  color: #f00;
+}
+.highlight-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.highlight-meta {
+  color: #AA22FF;
+}
+/* previously not defined, copying from default codemirror */
+.highlight-def {
+  color: #00f;
+}
+.highlight-string-2 {
+  color: #f50;
+}
+.highlight-qualifier {
+  color: #555;
+}
+.highlight-bracket {
+  color: #997;
+}
+.highlight-tag {
+  color: #170;
+}
+.highlight-attribute {
+  color: #00c;
+}
+.highlight-header {
+  color: blue;
+}
+.highlight-quote {
+  color: #090;
+}
+.highlight-link {
+  color: #00c;
+}
+/* apply the same style to codemirror */
+.cm-s-ipython span.cm-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-atom {
+  color: #88F;
+}
+.cm-s-ipython span.cm-number {
+  color: #080;
+}
+.cm-s-ipython span.cm-def {
+  color: #00f;
+}
+.cm-s-ipython span.cm-variable {
+  color: #000;
+}
+.cm-s-ipython span.cm-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-variable-2 {
+  color: #1a1a1a;
+}
+.cm-s-ipython span.cm-variable-3 {
+  color: #333333;
+}
+.cm-s-ipython span.cm-comment {
+  color: #408080;
+  font-style: italic;
+}
+.cm-s-ipython span.cm-string {
+  color: #BA2121;
+}
+.cm-s-ipython span.cm-string-2 {
+  color: #f50;
+}
+.cm-s-ipython span.cm-meta {
+  color: #AA22FF;
+}
+.cm-s-ipython span.cm-qualifier {
+  color: #555;
+}
+.cm-s-ipython span.cm-builtin {
+  color: #008000;
+}
+.cm-s-ipython span.cm-bracket {
+  color: #997;
+}
+.cm-s-ipython span.cm-tag {
+  color: #170;
+}
+.cm-s-ipython span.cm-attribute {
+  color: #00c;
+}
+.cm-s-ipython span.cm-header {
+  color: blue;
+}
+.cm-s-ipython span.cm-quote {
+  color: #090;
+}
+.cm-s-ipython span.cm-link {
+  color: #00c;
+}
+.cm-s-ipython span.cm-error {
+  color: #f00;
+}
+.cm-s-ipython span.cm-tab {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAMCAYAAAAkuj5RAAAAAXNSR0IArs4c6QAAAGFJREFUSMft1LsRQFAQheHPowAKoACx3IgEKtaEHujDjORSgWTH/ZOdnZOcM/sgk/kFFWY0qV8foQwS4MKBCS3qR6ixBJvElOobYAtivseIE120FaowJPN75GMu8j/LfMwNjh4HUpwg4LUAAAAASUVORK5CYII=);
+  background-position: right;
+  background-repeat: no-repeat;
+}
+div.output_wrapper {
+  /* this position must be relative to enable descendents to be absolute within it */
+  position: relative;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  z-index: 1;
+}
+/* class for the output area when it should be height-limited */
+div.output_scroll {
+  /* ideally, this would be max-height, but FF barfs all over that */
+  height: 24em;
+  /* FF needs this *and the wrapper* to specify full width, or it will shrinkwrap */
+  width: 100%;
+  overflow: auto;
+  border-radius: 2px;
+  -webkit-box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  display: block;
+}
+/* output div while it is collapsed */
+div.output_collapsed {
+  margin: 0px;
+  padding: 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+div.out_prompt_overlay {
+  height: 100%;
+  padding: 0px 0.4em;
+  position: absolute;
+  border-radius: 2px;
+}
+div.out_prompt_overlay:hover {
+  /* use inner shadow to get border that is computed the same on WebKit/FF */
+  -webkit-box-shadow: inset 0 0 1px #000;
+  box-shadow: inset 0 0 1px #000;
+  background: rgba(240, 240, 240, 0.5);
+}
+div.output_prompt {
+  color: #D84315;
+}
+/* This class is the outer container of all output sections. */
+div.output_area {
+  padding: 0px;
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.output_area .MathJax_Display {
+  text-align: left !important;
+}
+div.output_area 
+div.output_area 
+div.output_area img,
+div.output_area svg {
+  max-width: 100%;
+  height: auto;
+}
+div.output_area img.unconfined,
+div.output_area svg.unconfined {
+  max-width: none;
+}
+div.output_area .mglyph &gt; img {
+  max-width: none;
+}
+/* This is needed to protect the pre formating from global settings such
+   as that of bootstrap */
+.output {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.output_area {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+div.output_area pre {
+  margin: 0;
+  padding: 1px 0 1px 0;
+  border: 0;
+  vertical-align: baseline;
+  color: black;
+  background-color: transparent;
+  border-radius: 0;
+}
+/* This class is for the output subarea inside the output_area and after
+   the prompt div. */
+div.output_subarea {
+  overflow-x: auto;
+  padding: 0.4em;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+  max-width: calc(100% - 14ex);
+}
+div.output_scroll div.output_subarea {
+  overflow-x: visible;
+}
+/* The rest of the output_* classes are for special styling of the different
+   output types */
+/* all text output has this class: */
+div.output_text {
+  text-align: left;
+  color: #000;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+}
+/* stdout/stderr are 'text' as well as 'stream', but execute_result/error are *not* streams */
+div.output_stderr {
+  background: #fdd;
+  /* very light red background for stderr */
+}
+div.output_latex {
+  text-align: left;
+}
+/* Empty output_javascript divs should have no height */
+div.output_javascript:empty {
+  padding: 0;
+}
+.js-error {
+  color: darkred;
+}
+/* raw_input styles */
+div.raw_input_container {
+  line-height: 1.21429em;
+  padding-top: 5px;
+}
+pre.raw_input_prompt {
+  /* nothing needed here. */
+}
+input.raw_input {
+  font-family: monospace;
+  font-size: inherit;
+  color: inherit;
+  width: auto;
+  /* make sure input baseline aligns with prompt */
+  vertical-align: baseline;
+  /* padding + margin = 0.5em between prompt and cursor */
+  padding: 0em 0.25em;
+  margin: 0em 0.25em;
+}
+input.raw_input:focus {
+  box-shadow: none;
+}
+p.p-space {
+  margin-bottom: 10px;
+}
+div.output_unrecognized {
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+}
+div.output_unrecognized a {
+  color: inherit;
+  text-decoration: none;
+}
+div.output_unrecognized a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+.rendered_html {
+  color: #000;
+  /* any extras will just be numbers: */
+}
+
+
+
+.rendered_html :link {
+  text-decoration: underline;
+}
+.rendered_html :visited {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+.rendered_html h1:first-child {
+  margin-top: 0.538em;
+}
+.rendered_html h2:first-child {
+  margin-top: 0.636em;
+}
+.rendered_html h3:first-child {
+  margin-top: 0.777em;
+}
+.rendered_html h4:first-child {
+  margin-top: 1em;
+}
+.rendered_html h5:first-child {
+  margin-top: 1em;
+}
+.rendered_html h6:first-child {
+  margin-top: 1em;
+}
+.rendered_html ul:not(.list-inline),
+.rendered_html ol:not(.list-inline) {
+  padding-left: 2em;
+}
+
+
+
+
+
+
+
+
+.rendered_html * + ul {
+  margin-top: 1em;
+}
+.rendered_html * + ol {
+  margin-top: 1em;
+}
+
+
+
+
+
+.rendered_html pre,
+
+
+
+
+.rendered_html tr,
+.rendered_html th,
+
+
+.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+.rendered_html * + table {
+  margin-top: 1em;
+}
+
+.rendered_html * + p {
+  margin-top: 1em;
+}
+
+.rendered_html * + img {
+  margin-top: 1em;
+}
+.rendered_html img,
+
+.rendered_html img.unconfined,
+
+
+.rendered_html * + .alert {
+  margin-top: 1em;
+}
+[dir="rtl"] 
+div.text_cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.text_cell &gt; div.prompt {
+    display: none;
+  }
+}
+div.text_cell_render {
+  /*font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;*/
+  outline: none;
+  resize: none;
+  width: inherit;
+  border-style: none;
+  padding: 0.5em 0.5em 0.5em 0.4em;
+  color: #000;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+a.anchor-link:link {
+  text-decoration: none;
+  padding: 0px 20px;
+  visibility: hidden;
+}
+h1:hover .anchor-link,
+h2:hover .anchor-link,
+h3:hover .anchor-link,
+h4:hover .anchor-link,
+h5:hover .anchor-link,
+h6:hover .anchor-link {
+  visibility: visible;
+}
+.text_cell.rendered .input_area {
+  display: none;
+}
+.text_cell.rendered 
+.text_cell.rendered .rendered_html tr,
+.text_cell.rendered .rendered_html th,
+.text_cell.rendered 
+.text_cell.unrendered .text_cell_render {
+  display: none;
+}
+.text_cell .dropzone .input_area {
+  border: 2px dashed #bababa;
+  margin: -1px;
+}
+.cm-header-1,
+.cm-header-2,
+.cm-header-3,
+.cm-header-4,
+.cm-header-5,
+.cm-header-6 {
+  font-weight: bold;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.cm-header-1 {
+  font-size: 185.7%;
+}
+.cm-header-2 {
+  font-size: 157.1%;
+}
+.cm-header-3 {
+  font-size: 128.6%;
+}
+.cm-header-4 {
+  font-size: 110%;
+}
+.cm-header-5 {
+  font-size: 100%;
+  font-style: italic;
+}
+.cm-header-6 {
+  font-size: 100%;
+  font-style: italic;
+}
+&lt;/style&gt;
+&lt;style type="text/css"&gt;.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f8f8f8; }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */&lt;/style&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;blockquote&gt;&lt;p&gt;In computer science, a &lt;strong&gt;sorting algorithm&lt;/strong&gt; is an algorithm that puts elements of a list in a certain order. Efficient sorting is important for optimizing the efficiency of other algorithms (such as search and merge algorithms) that require input data to be in sorted lists. Sorting is also often useful for &lt;a href="https://en.wikipedia.org/wiki/Canonicalization" target="_blank"&gt;canonicalizing&lt;/a&gt; data and for producing human-readable output. - From &lt;a href="https://en.wikipedia.org/wiki/Multicollinearity" target="_blank"&gt;Wikipedia&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;There are many sorting algorithms. One of the most important factor when choosing which sorting algorithm to use is its algorithm complexity, represented in Big-O notations. &lt;a href="#figure-1"&gt;Figure (1)&lt;/a&gt; summarizes the the algorithm complexity of various sorting methods. Note that &lt;span style="font-size: 90% !important"&gt;$N$&lt;/span&gt; is is an array size, &lt;span style="font-size: 90% !important"&gt;$O$&lt;/span&gt; is the worst-case scenario, &lt;span style="font-size: 90% !important"&gt;$\Omega$&lt;/span&gt; is the best-case scenario, and &lt;span style="font-size: 90% !important"&gt;$\theta$&lt;/span&gt; is the average-case scenario. This post focuses on &lt;strong&gt;Selection Sort&lt;/strong&gt;.&lt;/p&gt;
+&lt;div class="row" id="fig-1" style="margin-top: 15px;"&gt;
+&lt;div class="col"&gt;&lt;img src="jupyter_images/sorting_all_complexities.png"/&gt;&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 1: Algorithm complexities and their efficiencies&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;div id="toc_container"&gt;
+&lt;p class="toc_title"&gt;Contents&lt;/p&gt;
+&lt;ul class="toc_list"&gt;
+&lt;li&gt;&lt;a href="#Selection Sort"&gt;&lt;span class="toc_label"&gt;1&lt;/span&gt;Selection Sort&lt;/a&gt;&lt;/li&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#Understanding Selection Sort"&gt;&lt;span class="toc_label"&gt;1.1&lt;/span&gt;Understanding Selection Sort&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#Code Implementation"&gt;&lt;span class="toc_label"&gt;1.2&lt;/span&gt;Code Implementation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;div id="Selection Sort"&gt;&lt;/div&gt;&lt;h2 id="1.-Selection-Sort"&gt;1. Selection Sort&lt;a class="anchor-link" href="#1.-Selection-Sort"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Selection sort is an in-place comparison sorting algorithm. It has an &lt;span style="font-size: 90% !important"&gt;$O(N^2)$&lt;/span&gt; time complexity at all times, according to &lt;a href="#fig-1"&gt;figure (1)&lt;/a&gt;. Effectively, the only reason that schools still teach selection sort is because it's an easy-to-understand, teachable technique, on the path to more complex and powerful algorithms. It has the follwoing Pros and Cons:&lt;/p&gt;
+&lt;div&gt;&lt;hr/&gt;&lt;/div&gt;&lt;p&gt;&lt;a id="pros"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Pros&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;It is a straightforward and teachable technique.&lt;/li&gt;
+&lt;li&gt;It does no more than &lt;span style="font-size: 90% !important"&gt;$N$&lt;/span&gt; swaps, and thus is useful where swapping is expensive. However, this is rarely an important design factor, because there are better algorihtms for it.&lt;/li&gt;
+&lt;li&gt;It is an in-place algorithm. No additional temporary storage is required beyond what is needed to hold the original list (space complexity = &lt;span style="font-size: 90% !important"&gt;$O(1)$&lt;/span&gt;)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;a id="cons"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Cons&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Bad for large lists due to &lt;span style="font-size: 90% !important"&gt;$O(N^2)$&lt;/span&gt; time complexity&lt;/li&gt;
+&lt;li&gt;Other sorting algorithms are better. &lt;/li&gt;
+&lt;/ol&gt;
+&lt;div&gt;&lt;hr/&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;div id="Understanding Selection Sort"&gt;&lt;/div&gt;&lt;h3 id="1.1.-Understanding-Selection-Sort"&gt;1.1. Understanding Selection Sort&lt;a class="anchor-link" href="#1.1.-Understanding-Selection-Sort"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The selection sort algorithm works by repeatedly finding the smallest element from unsorted part and putting it at the beginning of the sorted part. Effectively, the algorithm divides the list into two parts:&lt;/p&gt;
+&lt;ol class="rounded-list" style="margin-bottom: 20px !important; margin-top: 20px! important;"&gt;
+&lt;li&gt;&lt;p&gt;The sublist which is already sorted.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Remaining sublist which is unsorted.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;p&gt;For each iteration, the smallest element from the unsorted sublist is picked and moved to the end of the sorted sublist. Let's dive into the illustrations for better understanding of selection sort. Imagine that you want to sort the books shown in &lt;a href="#fig-2"&gt;figure (2)&lt;/a&gt; in ascending order of sizes.&lt;/p&gt;
+&lt;div class="row full_screen_margin_50 mobile_responsive_plot_full_width" id="fig-2" style="margin-top: 15px;"&gt;
+&lt;div class="col"&gt;&lt;img src="jupyter_images/sorting_books_1.png"/&gt;&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 2: Books to sort&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;div&gt;&lt;hr/&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;1st Iteration&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Selection sort divides a list into sorted &amp; unsorted sublists. The grey divider represents the split between sorted (left) vs unsorted (right) array. At the beginning, nothing is sorted.&lt;/p&gt;
+&lt;div class="row full_screen_margin_40 mobile_responsive_plot_full_width" id="fig-3" style="margin-top: 15px;"&gt;
+&lt;div class="col"&gt;&lt;img src="jupyter_images/sorting_books_2.png"/&gt;&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 3: Selection sort 1&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;The algorithm finds the smallest value in the unsorted sublist, and then put it in the last index of the sorted sublist. Since this is the first iteration, the smallest value in the unsorted sublist becomes the first element in the sorted sublist.&lt;/p&gt;
+&lt;div class="row full_screen_margin_80 mobile_responsive_plot_full_width" id="fig-4" style="margin-top: 15px;"&gt;
+&lt;div class="col"&gt;&lt;img src="jupyter_images/sorting_selection_all_1.png"/&gt;&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 4: Selection sort 2&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;div&gt;&lt;hr/&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;2nd Iteration&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;After the 1st iteration, the grey divider (that splits sorted vs unsorted) moves 1 index to the right. The smallest value in the new unsorted sublist is identified, and then moved to the last index of the sorted sublist. From now on, the same procedures are repeated until sorting is completed.&lt;/p&gt;
+&lt;div class="row" id="fig-5" style="margin-top: 15px;"&gt;
+&lt;div class="col"&gt;&lt;img src="jupyter_images/sorting_selection_all_2.png"/&gt;&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 5: Selection sort 3&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;div&gt;&lt;hr/&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;3rd Iteration&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="row" id="fig-6" style="margin-top: 15px;"&gt;
+&lt;div class="col"&gt;&lt;img src="jupyter_images/sorting_selection_all_3.png"/&gt;&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 6: Selection sort 4&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;div&gt;&lt;hr/&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;4th Iteration&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="row" id="fig-7" style="margin-top: 15px;"&gt;
+&lt;div class="col"&gt;&lt;img src="jupyter_images/sorting_selection_all_4.png"/&gt;&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 7: Selection sort 5&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;div&gt;&lt;hr/&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;5th Iteration&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="row" id="fig-8" style="margin-top: 15px;"&gt;
+&lt;div class="col"&gt;&lt;img src="jupyter_images/sorting_selection_all_5.png"/&gt;&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 8: Selection sort 6&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;div&gt;&lt;hr/&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;6th Iteration&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Sorting is now over. Notice that the grey divider moved N=6 times total, as mentioned in the 2nd Pros of selection sort &lt;a href="#pros"&gt;above&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="row" id="fig-9" style="margin-top: 15px;"&gt;
+&lt;div class="col"&gt;&lt;img src="jupyter_images/sorting_selection_all_6.png"/&gt;&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 9: Selection sort 7&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;div&gt;&lt;hr/&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;div style="margin-top: -15px"&gt;&lt;/div&gt;&lt;p&gt;&lt;a href="#fig-10"&gt;Figure (10)&lt;/a&gt; is the gif represention of the selection sort algorithm described above. Notice that the left of grey divider is sorted sublist, and right is the unsorted sublist. At the last iteration, the grey wall is at the end of the books, representing the fact that all books are now sorted in ascending order. Also notice that the grey divider moved only 6 times, which supports the 2nd pros of selection sort mentioned &lt;a href="#cons"&gt;above.&lt;/a&gt;&lt;/p&gt;
+&lt;div class="row full_screen_margin_60 mobile_responsive_plot_full_width" id="fig-10" style="margin-top: -10px;"&gt;
+&lt;div class="col"&gt;&lt;img src="jupyter_images/sorting_selection_books.gif"/&gt;&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 10: Selection sort gif&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;div id="Code Implementation"&gt;&lt;/div&gt;&lt;h3 id="1.2.-Code-Implementation"&gt;1.2. Code Implementation&lt;a class="anchor-link" href="#1.2.-Code-Implementation"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;pre&gt;
+    &lt;code class="language-java"&gt;
+import java.util.Arrays;
+//@author: Violet Oh
+
+public class Selection_Sort {
+    public static void main(String[] args) {
+        int[] array = {2, 6, 1, 5, 3, 4}; // The array we discussed.
+        System.out.println(Arrays.toString(array));
+        SelectionSort(array);
+        System.out.println(Arrays.toString(array));
+    }
+    public static void SelectionSort(int[] array) {
+        for (int i = 0; i &lt; array.length - 1; ++i)
+        {
+            int idxMin = i;
+            for (int j = i + 1; j &lt; array.length; ++j)  // Using nested loop.
+            {
+                if (array[j] &lt; array[idxMin])   // If value at the index of j is smaller than that of i.
+                {
+                    idxMin = j;
+                }
+            }
+        int temp = array[i];    // The value at the index of i gets stored in an instance variable.
+        array[i] = array[idxMin]; // Put the smaller value to the index of i.
+        array[idxMin] = temp;   // Replace the swapped value with the smaller value.
+
+        System.out.println(Arrays.toString(array)); // Print it out to see the changes.
+        }
+    }
+}
+    &lt;/code&gt;
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;div class="output_wrapper" style="top: -20px;"&gt;
+&lt;div class="output"&gt;
+&lt;div class="output_area" style="margin: 0 !important;"&gt;
+&lt;div class="prompt output_prompt" style="width: 69.53px;"&gt;Out[24]:&lt;/div&gt;
+&lt;div class="output_text output_subarea output_execute_result"&gt;
+&lt;pre&gt;[2, 6, 1, 5, 3, 4]
+[1, 6, 2, 5, 3, 4]
+[1, 2, 6, 5, 3, 4]
+[1, 2, 3, 5, 6, 4]
+[1, 2, 3, 4, 6, 5]
+[1, 2, 3, 4, 5, 6]
+[1, 2, 3, 4, 5, 6]
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="Algorithms"></category><category term="algorithm"></category><category term="sorting"></category><category term="selection sort"></category><category term="algorithm complexity"></category></entry></feed>
