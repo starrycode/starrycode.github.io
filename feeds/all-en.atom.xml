@@ -1,5 +1,1455 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Starry Code</title><link href="https://starrycode.github.io/" rel="alternate"></link><link href="https://starrycode.github.io/feeds/all-en.atom.xml" rel="self"></link><id>https://starrycode.github.io/</id><updated>2020-09-01T00:00:00-05:00</updated><subtitle>Coding with STARS</subtitle><entry><title>Visual Understanding of Insertion Sort Algorithm</title><link href="https://starrycode.github.io/visual-understanding-of-insertion-sort-algorithm" rel="alternate"></link><published>2020-09-01T00:00:00-05:00</published><updated>2020-09-01T00:00:00-05:00</updated><author><name>VIOLET OH</name></author><id>tag:starrycode.github.io,2020-09-01:/visual-understanding-of-insertion-sort-algorithm</id><summary type="html">&lt;style type="text/css"&gt;/*!
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Starry Code</title><link href="https://starrycode.github.io/" rel="alternate"></link><link href="https://starrycode.github.io/feeds/all-en.atom.xml" rel="self"></link><id>https://starrycode.github.io/</id><updated>2021-07-12T00:00:00-05:00</updated><subtitle>Coding with STARS</subtitle><entry><title>Detecting a Loop in Linked Lists and Finding a Start of the Loop</title><link href="https://starrycode.github.io/detecting_a_loop_in_linked_lists_and_finding_the_start_of_the_loop" rel="alternate"></link><published>2021-07-12T00:00:00-05:00</published><updated>2021-07-12T00:00:00-05:00</updated><author><name>VIOLET OH</name></author><id>tag:starrycode.github.io,2021-07-12:/detecting_a_loop_in_linked_lists_and_finding_the_start_of_the_loop</id><summary type="html">&lt;style type="text/css"&gt;/*!
+*
+* IPython notebook
+*
+*/
+/* CSS font colors for translated ANSI escape sequences */
+/* The color values are a mix of
+   http://www.xcolors.net/dl/baskerville-ivorylight and
+   http://www.xcolors.net/dl/euphrasia */
+.ansi-black-fg {
+  color: #3E424D;
+}
+.ansi-black-bg {
+  background-color: #3E424D;
+}
+.ansi-black-intense-fg {
+  color: #282C36;
+}
+.ansi-black-intense-bg {
+  background-color: #282C36;
+}
+.ansi-red-fg {
+  color: #E75C58;
+}
+.ansi-red-bg {
+  background-color: #E75C58;
+}
+.ansi-red-intense-fg {
+  color …&lt;/style&gt;</summary><content type="html">&lt;style type="text/css"&gt;/*!
+*
+* IPython notebook
+*
+*/
+/* CSS font colors for translated ANSI escape sequences */
+/* The color values are a mix of
+   http://www.xcolors.net/dl/baskerville-ivorylight and
+   http://www.xcolors.net/dl/euphrasia */
+.ansi-black-fg {
+  color: #3E424D;
+}
+.ansi-black-bg {
+  background-color: #3E424D;
+}
+.ansi-black-intense-fg {
+  color: #282C36;
+}
+.ansi-black-intense-bg {
+  background-color: #282C36;
+}
+.ansi-red-fg {
+  color: #E75C58;
+}
+.ansi-red-bg {
+  background-color: #E75C58;
+}
+.ansi-red-intense-fg {
+  color: #B22B31;
+}
+.ansi-red-intense-bg {
+  background-color: #B22B31;
+}
+.ansi-green-fg {
+  color: #00A250;
+}
+.ansi-green-bg {
+  background-color: #00A250;
+}
+.ansi-green-intense-fg {
+  color: #007427;
+}
+.ansi-green-intense-bg {
+  background-color: #007427;
+}
+.ansi-yellow-fg {
+  color: #DDB62B;
+}
+.ansi-yellow-bg {
+  background-color: #DDB62B;
+}
+.ansi-yellow-intense-fg {
+  color: #B27D12;
+}
+.ansi-yellow-intense-bg {
+  background-color: #B27D12;
+}
+.ansi-blue-fg {
+  color: #208FFB;
+}
+.ansi-blue-bg {
+  background-color: #208FFB;
+}
+.ansi-blue-intense-fg {
+  color: #0065CA;
+}
+.ansi-blue-intense-bg {
+  background-color: #0065CA;
+}
+.ansi-magenta-fg {
+  color: #D160C4;
+}
+.ansi-magenta-bg {
+  background-color: #D160C4;
+}
+.ansi-magenta-intense-fg {
+  color: #A03196;
+}
+.ansi-magenta-intense-bg {
+  background-color: #A03196;
+}
+.ansi-cyan-fg {
+  color: #60C6C8;
+}
+.ansi-cyan-bg {
+  background-color: #60C6C8;
+}
+.ansi-cyan-intense-fg {
+  color: #258F8F;
+}
+.ansi-cyan-intense-bg {
+  background-color: #258F8F;
+}
+.ansi-white-fg {
+  color: #C5C1B4;
+}
+.ansi-white-bg {
+  background-color: #C5C1B4;
+}
+.ansi-white-intense-fg {
+  color: #A1A6B2;
+}
+.ansi-white-intense-bg {
+  background-color: #A1A6B2;
+}
+.ansi-default-inverse-fg {
+  color: #FFFFFF;
+}
+.ansi-default-inverse-bg {
+  background-color: #000000;
+}
+.ansi-bold {
+  font-weight: bold;
+}
+.ansi-underline {
+  text-decoration: underline;
+}
+/* The following styles are deprecated an will be removed in a future version */
+.ansibold {
+  font-weight: bold;
+}
+.ansi-inverse {
+  outline: 0.5px dotted;
+}
+/* use dark versions for foreground, to improve visibility */
+.ansiblack {
+  color: black;
+}
+.ansired {
+  color: darkred;
+}
+.ansigreen {
+  color: darkgreen;
+}
+.ansiyellow {
+  color: #c4a000;
+}
+.ansiblue {
+  color: darkblue;
+}
+.ansipurple {
+  color: darkviolet;
+}
+.ansicyan {
+  color: steelblue;
+}
+.ansigray {
+  color: gray;
+}
+/* and light for background, for the same reason */
+.ansibgblack {
+  background-color: black;
+}
+.ansibgred {
+  background-color: red;
+}
+.ansibggreen {
+  background-color: green;
+}
+.ansibgyellow {
+  background-color: yellow;
+}
+.ansibgblue {
+  background-color: blue;
+}
+.ansibgpurple {
+  background-color: magenta;
+}
+.ansibgcyan {
+  background-color: cyan;
+}
+.ansibggray {
+  background-color: gray;
+}
+div.cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border-radius: 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  width: 100%;
+  padding: 5px;
+  /* This acts as a spacer between cells, that is outside the border */
+  margin: 0px;
+  outline: none;
+  position: relative;
+  overflow: visible;
+}
+div.cell:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: transparent;
+}
+div.cell.jupyter-soft-selected {
+  border-left-color: #E3F2FD;
+  border-left-width: 1px;
+  padding-left: 5px;
+  border-right-color: #E3F2FD;
+  border-right-width: 1px;
+  background: #E3F2FD;
+}
+@media print {
+  div.cell.jupyter-soft-selected {
+    border-color: transparent;
+  }
+}
+div.cell.selected,
+div.cell.selected.jupyter-soft-selected {
+  border-color: #ababab;
+}
+div.cell.selected:before,
+div.cell.selected.jupyter-soft-selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #42A5F5;
+}
+@media print {
+  div.cell.selected,
+  div.cell.selected.jupyter-soft-selected {
+    border-color: transparent;
+  }
+}
+.edit_mode div.cell.selected {
+  border-color: #66BB6A;
+}
+.edit_mode div.cell.selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #66BB6A;
+}
+@media print {
+  .edit_mode div.cell.selected {
+    border-color: transparent;
+  }
+}
+.prompt {
+  /* This needs to be wide enough for 3 digit prompt numbers: In[100]: */
+  min-width: 14ex;
+  /* This padding is tuned to match the padding on the CodeMirror editor. */
+  padding: 0.4em;
+  margin: 0px;
+  font-family: monospace;
+  text-align: right;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+  /* Don't highlight prompt number selection */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Use default cursor */
+  cursor: default;
+}
+@media (max-width: 540px) {
+  .prompt {
+    text-align: left;
+  }
+}
+div.inner_cell {
+  min-width: 0;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_area {
+  border: 1px solid #cfcfcf;
+  border-radius: 2px;
+  background: #f7f7f7;
+  line-height: 1.21429em;
+}
+/* This is needed so that empty prompt areas can collapse to zero height when there
+   is no content in the output_subarea and the prompt. The main purpose of this is
+   to make sure that empty JavaScript output_subareas have no height. */
+div.prompt:empty {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+div.unrecognized_cell {
+  padding: 5px 5px 5px 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.unrecognized_cell .inner_cell {
+  border-radius: 2px;
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+  border: 1px solid #cfcfcf;
+  background: #eaeaea;
+}
+div.unrecognized_cell .inner_cell a {
+  color: inherit;
+  text-decoration: none;
+}
+div.unrecognized_cell .inner_cell a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+@media (max-width: 540px) {
+  div.unrecognized_cell &gt; div.prompt {
+    display: none;
+  }
+}
+div.code_cell {
+  /* avoid page breaking on code cells when printing */
+}
+@media print {
+  div.code_cell {
+    page-break-inside: avoid;
+  }
+}
+/* any special styling for code cells that are currently running goes here */
+div.input {
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.input {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_prompt {
+  color: #303F9F;
+  border-top: 1px solid transparent;
+}
+div.input_area &gt; div.highlight {
+  margin: 0.4em;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+div.input_area &gt; div.highlight &gt; pre {
+  margin: 0px;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+/* The following gets added to the &lt;head&gt; if it is detected that the user has a
+ * monospace font with inconsistent normal/bold/italic height.  See
+ * notebookmain.js.  Such fonts will have keywords vertically offset with
+ * respect to the rest of the text.  The user should select a better font.
+ * See: https://github.com/ipython/ipython/issues/1503
+ *
+ * .CodeMirror span {
+ *      vertical-align: bottom;
+ * }
+ */
+.CodeMirror {
+  line-height: 1.21429em;
+  /* Changed from 1em to our global default */
+  font-size: 14px;
+  height: auto;
+  /* Changed to auto to autogrow */
+  background: none;
+  /* Changed from white to allow our bg to show through */
+}
+.CodeMirror-scroll {
+  /*  The CodeMirror docs are a bit fuzzy on if overflow-y should be hidden or visible.*/
+  /*  We have found that if it is visible, vertical scrollbars appear with font size changes.*/
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.CodeMirror-lines {
+  /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
+  /* we have set a different line-height and want this to scale with that. */
+  /* Note that this should set vertical padding only, since CodeMirror assumes
+       that horizontal padding will be set on CodeMirror pre */
+  padding: 0.4em 0;
+}
+.CodeMirror-linenumber {
+  padding: 0 8px 0 4px;
+}
+.CodeMirror-gutters {
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+}
+.CodeMirror pre {
+  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
+    use .CodeMirror-lines for vertical */
+  padding: 0 0.4em;
+  border: 0;
+  border-radius: 0;
+}
+.CodeMirror-cursor {
+  border-left: 1.4px solid black;
+}
+@media screen and (min-width: 2138px) and (max-width: 4319px) {
+  .CodeMirror-cursor {
+    border-left: 2px solid black;
+  }
+}
+@media screen and (min-width: 4320px) {
+  .CodeMirror-cursor {
+    border-left: 4px solid black;
+  }
+}
+/*
+
+Original style from softwaremaniacs.org (c) Ivan Sagalaev &lt;Maniac@SoftwareManiacs.Org&gt;
+Adapted from GitHub theme
+
+*/
+.highlight-base {
+  color: #000;
+}
+.highlight-variable {
+  color: #000;
+}
+.highlight-variable-2 {
+  color: #1a1a1a;
+}
+.highlight-variable-3 {
+  color: #333333;
+}
+.highlight-string {
+  color: #BA2121;
+}
+.highlight-comment {
+  color: #408080;
+  font-style: italic;
+}
+.highlight-number {
+  color: #080;
+}
+.highlight-atom {
+  color: #88F;
+}
+.highlight-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.highlight-builtin {
+  color: #008000;
+}
+.highlight-error {
+  color: #f00;
+}
+.highlight-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.highlight-meta {
+  color: #AA22FF;
+}
+/* previously not defined, copying from default codemirror */
+.highlight-def {
+  color: #00f;
+}
+.highlight-string-2 {
+  color: #f50;
+}
+.highlight-qualifier {
+  color: #555;
+}
+.highlight-bracket {
+  color: #997;
+}
+.highlight-tag {
+  color: #170;
+}
+.highlight-attribute {
+  color: #00c;
+}
+.highlight-header {
+  color: blue;
+}
+.highlight-quote {
+  color: #090;
+}
+.highlight-link {
+  color: #00c;
+}
+/* apply the same style to codemirror */
+.cm-s-ipython span.cm-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-atom {
+  color: #88F;
+}
+.cm-s-ipython span.cm-number {
+  color: #080;
+}
+.cm-s-ipython span.cm-def {
+  color: #00f;
+}
+.cm-s-ipython span.cm-variable {
+  color: #000;
+}
+.cm-s-ipython span.cm-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-variable-2 {
+  color: #1a1a1a;
+}
+.cm-s-ipython span.cm-variable-3 {
+  color: #333333;
+}
+.cm-s-ipython span.cm-comment {
+  color: #408080;
+  font-style: italic;
+}
+.cm-s-ipython span.cm-string {
+  color: #BA2121;
+}
+.cm-s-ipython span.cm-string-2 {
+  color: #f50;
+}
+.cm-s-ipython span.cm-meta {
+  color: #AA22FF;
+}
+.cm-s-ipython span.cm-qualifier {
+  color: #555;
+}
+.cm-s-ipython span.cm-builtin {
+  color: #008000;
+}
+.cm-s-ipython span.cm-bracket {
+  color: #997;
+}
+.cm-s-ipython span.cm-tag {
+  color: #170;
+}
+.cm-s-ipython span.cm-attribute {
+  color: #00c;
+}
+.cm-s-ipython span.cm-header {
+  color: blue;
+}
+.cm-s-ipython span.cm-quote {
+  color: #090;
+}
+.cm-s-ipython span.cm-link {
+  color: #00c;
+}
+.cm-s-ipython span.cm-error {
+  color: #f00;
+}
+.cm-s-ipython span.cm-tab {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAMCAYAAAAkuj5RAAAAAXNSR0IArs4c6QAAAGFJREFUSMft1LsRQFAQheHPowAKoACx3IgEKtaEHujDjORSgWTH/ZOdnZOcM/sgk/kFFWY0qV8foQwS4MKBCS3qR6ixBJvElOobYAtivseIE120FaowJPN75GMu8j/LfMwNjh4HUpwg4LUAAAAASUVORK5CYII=);
+  background-position: right;
+  background-repeat: no-repeat;
+}
+div.output_wrapper {
+  /* this position must be relative to enable descendents to be absolute within it */
+  position: relative;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  z-index: 1;
+}
+/* class for the output area when it should be height-limited */
+div.output_scroll {
+  /* ideally, this would be max-height, but FF barfs all over that */
+  height: 24em;
+  /* FF needs this *and the wrapper* to specify full width, or it will shrinkwrap */
+  width: 100%;
+  overflow: auto;
+  border-radius: 2px;
+  -webkit-box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  display: block;
+}
+/* output div while it is collapsed */
+div.output_collapsed {
+  margin: 0px;
+  padding: 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+div.out_prompt_overlay {
+  height: 100%;
+  padding: 0px 0.4em;
+  position: absolute;
+  border-radius: 2px;
+}
+div.out_prompt_overlay:hover {
+  /* use inner shadow to get border that is computed the same on WebKit/FF */
+  -webkit-box-shadow: inset 0 0 1px #000;
+  box-shadow: inset 0 0 1px #000;
+  background: rgba(240, 240, 240, 0.5);
+}
+div.output_prompt {
+  color: #D84315;
+}
+/* This class is the outer container of all output sections. */
+div.output_area {
+  padding: 0px;
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.output_area .MathJax_Display {
+  text-align: left !important;
+}
+div.output_area 
+div.output_area 
+div.output_area img,
+div.output_area svg {
+  max-width: 100%;
+  height: auto;
+}
+div.output_area img.unconfined,
+div.output_area svg.unconfined {
+  max-width: none;
+}
+div.output_area .mglyph &gt; img {
+  max-width: none;
+}
+/* This is needed to protect the pre formating from global settings such
+   as that of bootstrap */
+.output {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.output_area {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+div.output_area pre {
+  margin: 0;
+  padding: 1px 0 1px 0;
+  border: 0;
+  vertical-align: baseline;
+  color: black;
+  background-color: transparent;
+  border-radius: 0;
+}
+/* This class is for the output subarea inside the output_area and after
+   the prompt div. */
+div.output_subarea {
+  overflow-x: auto;
+  padding: 0.4em;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+  max-width: calc(100% - 14ex);
+}
+div.output_scroll div.output_subarea {
+  overflow-x: visible;
+}
+/* The rest of the output_* classes are for special styling of the different
+   output types */
+/* all text output has this class: */
+div.output_text {
+  text-align: left;
+  color: #000;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+}
+/* stdout/stderr are 'text' as well as 'stream', but execute_result/error are *not* streams */
+div.output_stderr {
+  background: #fdd;
+  /* very light red background for stderr */
+}
+div.output_latex {
+  text-align: left;
+}
+/* Empty output_javascript divs should have no height */
+div.output_javascript:empty {
+  padding: 0;
+}
+.js-error {
+  color: darkred;
+}
+/* raw_input styles */
+div.raw_input_container {
+  line-height: 1.21429em;
+  padding-top: 5px;
+}
+pre.raw_input_prompt {
+  /* nothing needed here. */
+}
+input.raw_input {
+  font-family: monospace;
+  font-size: inherit;
+  color: inherit;
+  width: auto;
+  /* make sure input baseline aligns with prompt */
+  vertical-align: baseline;
+  /* padding + margin = 0.5em between prompt and cursor */
+  padding: 0em 0.25em;
+  margin: 0em 0.25em;
+}
+input.raw_input:focus {
+  box-shadow: none;
+}
+p.p-space {
+  margin-bottom: 10px;
+}
+div.output_unrecognized {
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+}
+div.output_unrecognized a {
+  color: inherit;
+  text-decoration: none;
+}
+div.output_unrecognized a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+.rendered_html {
+  color: #000;
+  /* any extras will just be numbers: */
+}
+
+
+
+.rendered_html :link {
+  text-decoration: underline;
+}
+.rendered_html :visited {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+.rendered_html h1:first-child {
+  margin-top: 0.538em;
+}
+.rendered_html h2:first-child {
+  margin-top: 0.636em;
+}
+.rendered_html h3:first-child {
+  margin-top: 0.777em;
+}
+.rendered_html h4:first-child {
+  margin-top: 1em;
+}
+.rendered_html h5:first-child {
+  margin-top: 1em;
+}
+.rendered_html h6:first-child {
+  margin-top: 1em;
+}
+.rendered_html ul:not(.list-inline),
+.rendered_html ol:not(.list-inline) {
+  padding-left: 2em;
+}
+
+
+
+
+
+
+
+
+.rendered_html * + ul {
+  margin-top: 1em;
+}
+.rendered_html * + ol {
+  margin-top: 1em;
+}
+
+
+
+
+
+.rendered_html pre,
+
+
+
+
+.rendered_html tr,
+.rendered_html th,
+
+
+.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+.rendered_html * + table {
+  margin-top: 1em;
+}
+
+.rendered_html * + p {
+  margin-top: 1em;
+}
+
+.rendered_html * + img {
+  margin-top: 1em;
+}
+.rendered_html img,
+
+.rendered_html img.unconfined,
+
+
+.rendered_html * + .alert {
+  margin-top: 1em;
+}
+[dir="rtl"] 
+div.text_cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.text_cell &gt; div.prompt {
+    display: none;
+  }
+}
+div.text_cell_render {
+  /*font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;*/
+  outline: none;
+  resize: none;
+  width: inherit;
+  border-style: none;
+  padding: 0.5em 0.5em 0.5em 0.4em;
+  color: #000;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+a.anchor-link:link {
+  text-decoration: none;
+  padding: 0px 20px;
+  visibility: hidden;
+}
+h1:hover .anchor-link,
+h2:hover .anchor-link,
+h3:hover .anchor-link,
+h4:hover .anchor-link,
+h5:hover .anchor-link,
+h6:hover .anchor-link {
+  visibility: visible;
+}
+.text_cell.rendered .input_area {
+  display: none;
+}
+.text_cell.rendered 
+.text_cell.rendered .rendered_html tr,
+.text_cell.rendered .rendered_html th,
+.text_cell.rendered 
+.text_cell.unrendered .text_cell_render {
+  display: none;
+}
+.text_cell .dropzone .input_area {
+  border: 2px dashed #bababa;
+  margin: -1px;
+}
+.cm-header-1,
+.cm-header-2,
+.cm-header-3,
+.cm-header-4,
+.cm-header-5,
+.cm-header-6 {
+  font-weight: bold;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.cm-header-1 {
+  font-size: 185.7%;
+}
+.cm-header-2 {
+  font-size: 157.1%;
+}
+.cm-header-3 {
+  font-size: 128.6%;
+}
+.cm-header-4 {
+  font-size: 110%;
+}
+.cm-header-5 {
+  font-size: 100%;
+  font-style: italic;
+}
+.cm-header-6 {
+  font-size: 100%;
+  font-style: italic;
+}
+&lt;/style&gt;
+&lt;style type="text/css"&gt;pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.highlight .hll { background-color: #ffffcc }
+.highlight { background: #f8f8f8; }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */&lt;/style&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;A &lt;strong&gt;Linked List&lt;/strong&gt; is a linear data structure where, unlike the structure of an array, the elements’ data part and address part are stored separately. Each element inside a linked list is linked using pointers and addresses. Each element is called a node. Due to the structure of the linked list, an element cannot be accessed directly. However, the insertions and deletions of the linked list are far less complicated compared to those of the array. Therefore, preferences are given to using linked lists over arrays.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;div id="toc_container"&gt;
+&lt;p class="toc_title"&gt;Contents&lt;/p&gt;
+&lt;ul class="toc_list"&gt;
+&lt;li&gt;&lt;a href="#Linked List"&gt;&lt;span class="toc_label"&gt;1&lt;/span&gt;Linked List&lt;/a&gt;&lt;/li&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#Detecting a Loop"&gt;&lt;span class="toc_label"&gt;1.1&lt;/span&gt;Detecting a Loop&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#Finding the Start of the Loop"&gt;&lt;span class="toc_label"&gt;1.2&lt;/span&gt;Finding the Start of the Loop&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#Algorithm Explanation"&gt;&lt;span class="toc_label"&gt;1.3&lt;/span&gt;Algorithm Explanation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#Code Implementation"&gt;&lt;span class="toc_label"&gt;1.4&lt;/span&gt;Code Implementation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;div id="Linked List"&gt;&lt;/div&gt;&lt;h2 id="1.-Linked-List"&gt;1. Linked List&lt;a class="anchor-link" href="#1.-Linked-List"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;A linked list would normally have a start and an end. The first node pointing to the second node, the second node pointing to the third node, etc. The last element in the linked list points to null, but nothing points to the first element in the linked list.&lt;/p&gt;
+&lt;div class="row" id="figure-1" style="margin-top: 15px;"&gt;
+&lt;div class="col"&gt;&lt;img src="jupyter_images/normal_linked_list.png"/&gt;&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 1: Typical linked list&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;div id="Detecting a Loop"&gt;&lt;/div&gt;&lt;h3 id="1.1.-Detecting-a-Loop"&gt;1.1. Detecting a Loop&lt;a class="anchor-link" href="#1.1.-Detecting-a-Loop"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;How about when there’s a loop inside a list? In this post, detecting a loop inside a list, and detecting the start of the loop will be discussed. Consider the following linked list in &lt;a href="#figure-2"&gt;Figure (2)&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="row give-margin-inline-big-plot mobile_responsive_plot_full_width" id="figure_2"&gt;
+&lt;div class="col"&gt;&lt;img src="jupyter_images/normal_linked_list_1.png"/&gt;&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 2: Linked list with a loop&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Detecting a loop inside a linked list is the first step. There are two pointers: a slower pointer ‘S’ and a faster pointer ‘F’ will be used to detect a loop.&lt;/p&gt;
+&lt;p&gt;The slower pointer will be moving one node at a time whereas the faster pointer will be moving two nodes at a time. A linked list without a loop would never have two pointers pointing to the same node since the faster pointer is always ahead of slower pointer and the distance between the two pointers will always be increasing every time the pointers move. This is Floyd’s Cycle-finding algorithm, and it is also called the “tortoise and the hare algorithm”. (The faster pointer is a hare, and the slower pointer is a tortoise.) Therefore, if the two pointers wind up pointing to the same node, it implies that there is a loop inside a list.&lt;/p&gt;
+&lt;p&gt;This is the strategy to detect a loop inside a list. The following is the illustration of the two pointers moving and winding up pointing to the same node.&lt;/p&gt;
+&lt;div&gt;&lt;hr/&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Detecting a Loop Illustration&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="row give-margin-inline-big-plot mobile_responsive_plot_full_width" id="figure-3" style="margin-top: 15px;"&gt;
+&lt;div class="col"&gt;&lt;img src="jupyter_images/detect_1.png"/&gt;&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 3: Loop detection 1&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row give-margin-inline-big-plot mobile_responsive_plot_full_width" id="figure-4" style="margin-top: 15px;"&gt;
+&lt;div class="col"&gt;&lt;img src="jupyter_images/detect_2.png"/&gt;&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 4: Loop detection 2&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row give-margin-inline-big-plot mobile_responsive_plot_full_width" id="figure-5" style="margin-top: 15px;"&gt;
+&lt;div class="col"&gt;&lt;img src="jupyter_images/detect_3.png"/&gt;&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 5: Loop detection 3&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row give-margin-inline-big-plot mobile_responsive_plot_full_width" id="figure-6" style="margin-top: 15px;"&gt;
+&lt;div class="col"&gt;&lt;img src="jupyter_images/detect_4.png"/&gt;&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 6: Loop detection 4&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row give-margin-inline-big-plot mobile_responsive_plot_full_width" id="figure-7" style="margin-top: 15px;"&gt;
+&lt;div class="col"&gt;&lt;img src="jupyter_images/detect_5.png"/&gt;&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 7: Loop detection 5&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row give-margin-inline-big-plot mobile_responsive_plot_full_width" id="figure-8" style="margin-top: 15px;"&gt;
+&lt;div class="col"&gt;&lt;img src="jupyter_images/detect_6.png"/&gt;&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 8: Loop detection 6&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row give-margin-inline-big-plot mobile_responsive_plot_full_width" id="figure-9" style="margin-top: 15px;"&gt;
+&lt;div class="col"&gt;&lt;img src="jupyter_images/detect_7.png"/&gt;&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 9: Loop detection 7&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;div&gt;&lt;hr/&gt;&lt;/div&gt;&lt;p&gt;&lt;a href="#figure-10"&gt;Figure (10)&lt;/a&gt; is the gif represention of the Floyd's Cycle-finding algorithm described above. Note that the faster pointer moves two nodes at a time whereas the slower pointer moves one node at a time. You can see that both pointers pointed to the node 3, which implies that this linked list has a loop inside itself.&lt;/p&gt;
+&lt;div class="row full_screen_margin_90 mobile_responsive_plot_full_width" id="figure-10" style="margin-top: -10px;"&gt;
+&lt;div class="col"&gt;&lt;img src="jupyter_images/blog_post_3_part1.gif"/&gt;&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 10: Loop detection gif&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;div id="Finding the Start of the Loop"&gt;&lt;/div&gt;&lt;h3 id="1.2.-Finding-the-Start-of-the-Loop"&gt;1.2. Finding the Start of the Loop&lt;a class="anchor-link" href="#1.2.-Finding-the-Start-of-the-Loop"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The next step is to figure out the &lt;strong&gt;start&lt;/strong&gt; of the loop. For this step, the faster pointer stays pointing at the same node continuing from the previous step, and the slower pointer points to the starting node of the list. Then both pointers move one node at a time until they meet. Once the pointers meet or point to the same node, then that particular node is the &lt;strong&gt;start&lt;/strong&gt; of the loop.&lt;/p&gt;
+&lt;div&gt;&lt;hr/&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Finding the start of the Loop Illustration&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="row give-margin-inline-big-plot mobile_responsive_plot_full_width" id="figure-11" style="margin-top: 15px;"&gt;
+&lt;div class="col"&gt;&lt;img src="jupyter_images/start_1.png"/&gt;&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 11: Finding start 1&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row give-margin-inline-big-plot mobile_responsive_plot_full_width" id="figure-12" style="margin-top: 15px;"&gt;
+&lt;div class="col"&gt;&lt;img src="jupyter_images/start_2.png"/&gt;&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 12: Finding start 2&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row give-margin-inline-big-plot mobile_responsive_plot_full_width" id="figure-13" style="margin-top: 15px;"&gt;
+&lt;div class="col"&gt;&lt;img src="jupyter_images/start_3.png"/&gt;&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 13: Finding start 3&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row give-margin-inline-big-plot mobile_responsive_plot_full_width" id="figure-14" style="margin-top: 15px;"&gt;
+&lt;div class="col"&gt;&lt;img src="jupyter_images/start_4.png"/&gt;&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 14: Finding start 4&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row give-margin-inline-big-plot mobile_responsive_plot_full_width" id="figure-15" style="margin-top: 15px;"&gt;
+&lt;div class="col"&gt;&lt;img src="jupyter_images/start_5.png"/&gt;&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 15: Finding start 5&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row give-margin-inline-big-plot mobile_responsive_plot_full_width" id="figure-16" style="margin-top: 15px;"&gt;
+&lt;div class="col"&gt;&lt;img src="jupyter_images/start_6.png"/&gt;&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 16: Finding start 6&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;div&gt;&lt;hr/&gt;&lt;/div&gt;&lt;p&gt;&lt;a href="#figure-17"&gt;Figure (17)&lt;/a&gt; is the gif represention of finding the start of the loop as described above. Note that the faster pointer stays at the same node from &lt;a href="#figure-9"&gt;Figure (9)&lt;/a&gt; and the slower pointer starts from the very first node of the list. Both of the pointers move one node at a time and they meet at the start of the loop.&lt;/p&gt;
+&lt;div class="row full_screen_margin_90 mobile_responsive_plot_full_width" id="figure-17" style="margin-top: -10px;"&gt;
+&lt;div class="col"&gt;&lt;img src="jupyter_images/blog_post_3_part2.gif"/&gt;&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 17: Finding start gif&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;div id="Algorithm Explanation"&gt;&lt;/div&gt;&lt;h3 id="1.3.-Algorithm-Explanation"&gt;1.3. Algorithm Explanation&lt;a class="anchor-link" href="#1.3.-Algorithm-Explanation"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;How does this algorithm work? Let &lt;em&gt;l&lt;/em&gt; be the length of the loop, and &lt;em&gt;m&lt;/em&gt; be the distance between the start of the loop and the very first node of the list.&lt;/p&gt;
+&lt;div&gt;&lt;hr/&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;&lt;em&gt;l&lt;/em&gt; and &lt;em&gt;m&lt;/em&gt; Illustration&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;In the following &lt;a href="#figure-18"&gt;diagram&lt;/a&gt;, &lt;em&gt;l&lt;/em&gt; is 5 since 5 nodes are forming a loop and &lt;em&gt;m&lt;/em&gt; is 4 since the distance between node 6 and node 7 is 4.&lt;/p&gt;
+&lt;div class="row give-margin-inline-big-plot mobile_responsive_plot_full_width" id="figure-18" style="margin-top: 15px;"&gt;
+&lt;div class="col"&gt;&lt;img src="jupyter_images/m_l.png"/&gt;&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 18: Algorithm explanation 1&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;div&gt;&lt;hr/&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;&lt;em&gt;k&lt;/em&gt; Illustration&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Let &lt;em&gt;k&lt;/em&gt; be the distance between the start of the loop and the node that was pointed by both pointers while detecting the loop. Recall that in the first step (Floyd’s cycle-finding algorithm), both pointers met at the node 3. Therefore, in the following &lt;a href="#figure-19"&gt;diagram&lt;/a&gt;, &lt;em&gt;k&lt;/em&gt; is 1 since the distance between the node 7 and the node 3 is 1.&lt;/p&gt;
+&lt;div class="row give-margin-inline-big-plot mobile_responsive_plot_full_width" id="figure-19" style="margin-top: 15px;"&gt;
+&lt;div class="col"&gt;&lt;img src="jupyter_images/k.png"/&gt;&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 19: Algorithm explanation 2&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;div&gt;&lt;hr/&gt;&lt;/div&gt;&lt;p&gt;Using these three variables, the distance traveled by the slower pointer is illustrated as the following:&lt;/p&gt;
+&lt;div style="font-size: 1rem;"&gt;
+$$ Distance\_S = m + p * l + k \tag{1}$$
+&lt;/div&gt;&lt;p&gt;Since the pointer traveled from the start of the list, entered the loop and looped p times, and &lt;em&gt;k&lt;/em&gt; amount since that is the end of the travel.&lt;/p&gt;
+&lt;div&gt;&lt;hr/&gt;&lt;/div&gt;&lt;p&gt;Similarly, the distance traveled by the faster pointer is illustrated as the following:&lt;/p&gt;
+&lt;div style="font-size: 1rem;"&gt;
+$$ Distance\_F = m + q * l + k \tag{2}$$
+&lt;/div&gt;&lt;p&gt;Note that p is less than q since the speed of the faster pointer is faster than that of the slower pointer and therefore the faster pointer travels more than the slower pointer.&lt;/p&gt;
+&lt;div&gt;&lt;hr/&gt;&lt;/div&gt;&lt;p&gt;Since the faster pointer traveled twice as fast as the slower pointer, the distance traveled by the faster pointer is as twice as the distance traveled by the slower pointer as well.&lt;/p&gt;
+&lt;div style="font-size: 1rem;"&gt;
+$$ Distance\_F = Distance\_S * 2 \tag{3}$$
+&lt;/div&gt;&lt;div style="font-size: 1rem;"&gt;
+$$ m + q*l + k = 2*(m + p*l + k) \tag{4}$$
+&lt;/div&gt;&lt;p&gt;By simplifying the above equation, it is equivalent to the following:&lt;/p&gt;
+&lt;div style="font-size: 1rem;"&gt;
+$$ m + k = (q – 2p)*l \tag{5}$$
+&lt;/div&gt;&lt;div&gt;&lt;hr/&gt;&lt;/div&gt;&lt;p&gt;Which implies  that &lt;em&gt;m&lt;/em&gt; + &lt;em&gt;k&lt;/em&gt; is a multiple of &lt;em&gt;l&lt;/em&gt;. Note that (q - 2p) will be replaced with x.&lt;/p&gt;
+&lt;div style="font-size: 1rem;"&gt;
+$$ m + k = x * l \tag{6}$$
+&lt;/div&gt;&lt;div style="font-size: 1rem;"&gt;
+$$ m = x * l  –  k \tag{7}$$
+&lt;/div&gt;&lt;p&gt;Hence, by the time the slower pointer entered the loop and traveled the distance of &lt;em&gt;m&lt;/em&gt;, the faster pointer had also traveled the distance of &lt;em&gt;m&lt;/em&gt;, or x * &lt;em&gt;l&lt;/em&gt; – &lt;em&gt;k&lt;/em&gt; since both pointers are moving at the same pace. Since &lt;em&gt;m&lt;/em&gt; + &lt;em&gt;k&lt;/em&gt; is a multiple of &lt;em&gt;l&lt;/em&gt; and the faster pointer started from &lt;em&gt;k&lt;/em&gt;, both pointers meet at the start of the loop.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;div id="Code Implementation"&gt;&lt;/div&gt;&lt;h3 id="1.4.-Code-Implementation"&gt;1.4. Code Implementation&lt;a class="anchor-link" href="#1.4.-Code-Implementation"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;div&gt;&lt;br/&gt;&lt;/div&gt;
+&lt;div class="solution_panel"&gt;
+&lt;div class="solution_title"&gt;
+&lt;p class="solution_title_string"&gt;Source Code in Python&lt;/p&gt;
+&lt;ul class="nav navbar-right panel_toolbox"&gt;
+&lt;li&gt;&lt;a class="collapse-link"&gt;&lt;i class="fa fa-chevron-down"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="clearfix"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="solution_content" style="display:block"&gt;
+&lt;pre&gt;
+            &lt;code class="language-python"&gt;
+               # Author: Violet Oh
+                Class ListNode:
+                    def __init__(self, x):
+                        self.val = x
+                        self.next = None
+                Class LinkedList:
+                    def hasCycle(self, head:ListNode) -&gt; bool:
+                        slow = fast = head
+                        while fast and fast.next:
+                            slow = slow.next
+                            fast = fast.next.next
+                            if fast == slow:               
+                                return True
+                        return False
+
+                # Create a linked list
+                linked_list = LinkedList()
+                linked_list.push(4)
+                linked_list.push(9)
+                linked_list.push(8)
+                linked_list.push(3)
+                linked_list.push(7)
+                linked_list.push(5)
+                linked_list.push(2)
+                linked_list.push(1)
+                linked_list.push(6)
+                answer = linked_list.hasCycle(linked_list.head)
+                print(answer)
+
+                # Make a loop inside the list
+                linked_list.head.next.next.next.next.next.next.next.next.next = linked_list.head.next.next.next.next
+                answer = linked_list.hasCycle(linked_list.head)
+                print(answer)
+            &lt;/code&gt;
+        &lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;div class="output_wrapper" style="top: -20px;"&gt;
+&lt;div class="output"&gt;
+&lt;div class="output_area" style="margin: 0 !important;"&gt;
+&lt;div class="prompt output_prompt" style="width: 69.53px;"&gt;Out[24]:&lt;/div&gt;
+&lt;div class="output_text output_subarea output_execute_result"&gt;
+&lt;pre&gt;False
+True
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;div&gt;&lt;br/&gt;&lt;/div&gt;
+&lt;div class="solution_panel"&gt;
+&lt;div class="solution_title"&gt;
+&lt;p class="solution_title_string"&gt;Source Code in Java&lt;/p&gt;
+&lt;ul class="nav navbar-right panel_toolbox"&gt;
+&lt;li&gt;&lt;a class="collapse-link"&gt;&lt;i class="fa fa-chevron-down"&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="clearfix"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="solution_content" style="display:block"&gt;
+&lt;pre&gt;
+            &lt;code class="language-java"&gt;
+               @author: Violet Oh 
+                class ListNode {
+                      int val;
+                      ListNode next;
+                      ListNode(int x) {
+                          val = x;
+                          next = null;
+                      }
+                  }
+
+                public class LinkedList {
+                    public boolean hasCycle(ListNode head) {
+                        if(head==null) return false;
+                        ListNode walker = head;
+                        ListNode runner = head;
+                        while(runner.next!=null &amp;&amp; runner.next.next!=null) {
+                            walker = walker.next;
+                            runner = runner.next.next;
+                            if(walker==runner) 
+                                return true;
+                        }
+                        return false;
+                    }
+                }
+
+
+            &lt;/code&gt;
+        &lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="algorithm"></category><category term="linked list"></category><category term="floyd's cycle-finding"></category><category term="pointers"></category></entry><entry><title>Visual Understanding of Insertion Sort Algorithm</title><link href="https://starrycode.github.io/visual-understanding-of-insertion-sort-algorithm" rel="alternate"></link><published>2020-09-01T00:00:00-05:00</published><updated>2020-09-01T00:00:00-05:00</updated><author><name>VIOLET OH</name></author><id>tag:starrycode.github.io,2020-09-01:/visual-understanding-of-insertion-sort-algorithm</id><summary type="html">&lt;style type="text/css"&gt;/*!
 *
 * IPython notebook
 *
@@ -1149,7 +2599,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 &lt;blockquote&gt;&lt;p&gt;In computer science, a &lt;strong&gt;sorting algorithm&lt;/strong&gt; is an algorithm that puts elements of a list in a certain order. Efficient sorting is important for optimizing the efficiency of other algorithms (such as search and merge algorithms) that require input data to be in sorted lists. Sorting is also often useful for &lt;a href="https://en.wikipedia.org/wiki/Canonicalization" target="_blank"&gt;canonicalizing&lt;/a&gt; data and for producing human-readable output. - From &lt;a href="https://en.wikipedia.org/wiki/Multicollinearity" target="_blank"&gt;Wikipedia&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;There are many sorting algorithms. One of the most important factor when choosing which sorting algorithm to use is its algorithm complexity, represented in Big-O notations. &lt;a href="#figure-1"&gt;Figure (1)&lt;/a&gt; summarizes the the algorithm complexity of various sorting methods. Note that &lt;span style="font-size: 90% !important"&gt;$N$&lt;/span&gt; is is an array size, &lt;span style="font-size: 90% !important"&gt;$O$&lt;/span&gt; is the worst-case scenario, &lt;span style="font-size: 90% !important"&gt;$\Omega$&lt;/span&gt; is the best-case scenario, and &lt;span style="font-size: 90% !important"&gt;$\theta$&lt;/span&gt; is the average-case scenario. This post focuses on &lt;strong&gt;Insertion Sort&lt;/strong&gt;.&lt;/p&gt;
-&lt;div class="row" id="fig-1" style="margin-top: 15px;"&gt;
+&lt;div class="row" id="figure-1" style="margin-top: 15px;"&gt;
 &lt;div class="col"&gt;&lt;img src="jupyter_images/sorting_all_complexities_insertion.png"/&gt;&lt;/div&gt;
 &lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 1: Algorithm complexities and their efficiencies&lt;/p&gt;&lt;/div&gt;
 &lt;/div&gt;
@@ -1341,7 +2791,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 &lt;div style="margin-top: -15px"&gt;&lt;/div&gt;&lt;p&gt;&lt;a href="#fig-17"&gt;Figure (17)&lt;/a&gt; is the gif represention of the insertion sort algorithm described above. Notice that the left side of the grey divider is a sorted sub-list, and right side of the divider is an unsorted sub-list. At the last iteration, the grey wall is at the end of the books, indicating the fact that all books are now sorted in an ascending order of sizes.&lt;/p&gt;
 &lt;div class="row full_screen_margin_60 mobile_responsive_plot_full_width" id="fig-17" style="margin-top: -10px;"&gt;
 &lt;div class="col"&gt;&lt;img src="jupyter_images/insertion_sort.gif"/&gt;&lt;/div&gt;
-&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 10: Insertion sort gif&lt;/p&gt;&lt;/div&gt;
+&lt;div class="col-12"&gt;&lt;p class="image-description"&gt;Figure 17: Insertion sort gif&lt;/p&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;

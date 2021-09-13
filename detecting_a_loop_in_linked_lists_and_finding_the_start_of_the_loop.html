@@ -17,22 +17,22 @@
                 <meta property="og:type" content="article" />
             <meta name="twitter:card" content="summary"/>
 
-        <meta name="keywords" content="algorithm, sorting, insertion sort, algorithm complexity, Algorithms, "/>
+        <meta name="keywords" content="algorithm, linked list, floyd's cycle-finding, pointers, Algorithms, "/>
 
-        <link rel="canonical" href="https://starrycode.github.io/visual-understanding-of-insertion-sort-algorithm">
-    <meta property="og:title" content="Visual Understanding of Insertion Sort Algorithm | Starry Code"/>
-    <meta property="og:url" content="https://starrycode.github.io/visual-understanding-of-insertion-sort-algorithm" />
+        <link rel="canonical" href="https://starrycode.github.io/detecting_a_loop_in_linked_lists_and_finding_the_start_of_the_loop">
+    <meta property="og:title" content="Detecting a Loop in Linked Lists and Finding a Start of the Loop | Starry Code"/>
+    <meta property="og:url" content="https://starrycode.github.io/detecting_a_loop_in_linked_lists_and_finding_the_start_of_the_loop" />
     <meta property="og:description" content="" />
     <meta property="og:site_name" content="Starry Code" />
     <meta property="og:article:author" content="VIOLET OH" />
-        <meta property="og:article:published_time" content="2020-09-01T00:00:00-05:00" />
-    <meta name="twitter:title" content="Visual Understanding of Insertion Sort Algorithm | Starry Code">
+        <meta property="og:article:published_time" content="2021-07-12T00:00:00-05:00" />
+    <meta name="twitter:title" content="Detecting a Loop in Linked Lists and Finding a Start of the Loop | Starry Code">
     <meta name="twitter:description" content="">
-        <meta property="og:image" content="https://starrycode.github.io/images/featured_images/insertion_preview.png" />
-        <meta name="twitter:image" content="https://starrycode.github.io/images/featured_images/insertion_preview.png" >
+        <meta property="og:image" content="https://starrycode.github.io/images/featured_images/linked_list_preview.png" />
+        <meta name="twitter:image" content="https://starrycode.github.io/images/featured_images/linked_list_preview.png" >
 
 
-        <title>    Visual Understanding of Insertion Sort Algorithm  | Starry Code
+        <title>    Detecting a Loop in Linked Lists and Finding a Start of the Loop  | Starry Code
 </title>
 
                 <link rel="stylesheet" type="text/css" href="https://starrycode.github.io/theme/libs/bootstrap-4.2.1/dist/css/bootstrap.min.css">
@@ -111,17 +111,17 @@ tex2jax: { inlineMath: [["$","$"],["\\(","\\)"]] },
 <div id="post-container" class="container post index">
     <article>
         <header class="pop-over">
-            <h1>Visual Understanding of Insertion Sort Algorithm</h1>
+            <h1>Detecting a Loop in Linked Lists and Finding a Start of the Loop</h1>
             <div class="row justify-content-between no-margin">
                 <h4 class="article-category">Category > <a class="article-category-link" href="https://starrycode.github.io/archives.html">Algorithms</a></h4>
-                <span class="article-date">Sep 01, 2020</span>
+                <span class="article-date">Jul 12, 2021</span>
             </div>
             <div class="meta meta-tag no-margin no-border">
                 <div>
                         <a href="https://starrycode.github.io/tag/algorithm.html" class="tag">algorithm</a>
-                        <a href="https://starrycode.github.io/tag/sorting.html" class="tag">sorting</a>
-                        <a href="https://starrycode.github.io/tag/insertion-sort.html" class="tag">insertion sort</a>
-                        <a href="https://starrycode.github.io/tag/algorithm-complexity.html" class="tag">algorithm complexity</a>
+                        <a href="https://starrycode.github.io/tag/linked-list.html" class="tag">linked list</a>
+                        <a href="https://starrycode.github.io/tag/floyds-cycle-finding.html" class="tag">floyd's cycle-finding</a>
+                        <a href="https://starrycode.github.io/tag/pointers.html" class="tag">pointers</a>
                 </div>
             </div>
             <section>
@@ -129,13 +129,13 @@ tex2jax: { inlineMath: [["$","$"],["\\(","\\)"]] },
         <div class="share-post-intro mr-2">Share This Post :</div>
         <div class="social-share-btns-container">
             <div class="social-share-btns">
-                <a class="share-btn share-btn-twitter" href="https://twitter.com/home?status=https://starrycode.github.io/visual-understanding-of-insertion-sort-algorithm" rel="nofollow" target="_blank">
+                <a class="share-btn share-btn-twitter" href="https://twitter.com/home?status=https://starrycode.github.io/detecting_a_loop_in_linked_lists_and_finding_the_start_of_the_loop" rel="nofollow" target="_blank">
                     <i class="fab fa-twitter"></i>
                 </a>
-                <a class="share-btn share-btn-facebook" href="http://www.facebook.com/sharer/sharer.php?u=https://starrycode.github.io/visual-understanding-of-insertion-sort-algorithm" rel="nofollow" target="_blank">
+                <a class="share-btn share-btn-facebook" href="http://www.facebook.com/sharer/sharer.php?u=https://starrycode.github.io/detecting_a_loop_in_linked_lists_and_finding_the_start_of_the_loop" rel="nofollow" target="_blank">
                     <i class="fab fa-facebook-f"></i>
                 </a>
-                <a class="share-btn share-btn-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=https://starrycode.github.io/visual-understanding-of-insertion-sort-algorithm" rel="nofollow" target="_blank">
+                <a class="share-btn share-btn-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=https://starrycode.github.io/detecting_a_loop_in_linked_lists_and_finding_the_start_of_the_loop" rel="nofollow" target="_blank">
                     <i class="fab fa-linkedin-in"></i>
                 </a>
             </div>
@@ -1265,13 +1265,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style><div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<blockquote><p>In computer science, a <strong>sorting algorithm</strong> is an algorithm that puts elements of a list in a certain order. Efficient sorting is important for optimizing the efficiency of other algorithms (such as search and merge algorithms) that require input data to be in sorted lists. Sorting is also often useful for <a href="https://en.wikipedia.org/wiki/Canonicalization" target="_blank">canonicalizing</a> data and for producing human-readable output. - From <a href="https://en.wikipedia.org/wiki/Multicollinearity" target="_blank">Wikipedia</a></p>
-</blockquote>
-<p>There are many sorting algorithms. One of the most important factor when choosing which sorting algorithm to use is its algorithm complexity, represented in Big-O notations. <a href="#figure-1">Figure (1)</a> summarizes the the algorithm complexity of various sorting methods. Note that <span style="font-size: 90% !important">$N$</span> is is an array size, <span style="font-size: 90% !important">$O$</span> is the worst-case scenario, <span style="font-size: 90% !important">$\Omega$</span> is the best-case scenario, and <span style="font-size: 90% !important">$\theta$</span> is the average-case scenario. This post focuses on <strong>Insertion Sort</strong>.</p>
-<div class="row" id="figure-1" style="margin-top: 15px;">
-<div class="col"><img src="jupyter_images/sorting_all_complexities_insertion.png"/></div>
-<div class="col-12"><p class="image-description">Figure 1: Algorithm complexities and their efficiencies</p></div>
-</div>
+<p>A <strong>Linked List</strong> is a linear data structure where, unlike the structure of an array, the elements’ data part and address part are stored separately. Each element inside a linked list is linked using pointers and addresses. Each element is called a node. Due to the structure of the linked list, an element cannot be accessed directly. However, the insertions and deletions of the linked list are far less complicated compared to those of the array. Therefore, preferences are given to using linked lists over arrays.</p>
 </div>
 </div>
 </div>
@@ -1281,10 +1275,13 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div id="toc_container">
 <p class="toc_title">Contents</p>
 <ul class="toc_list">
-<li><a href="#Insertion Sort"><span class="toc_label">1</span>Insertion Sort</a></li>
+<li><a href="#Linked List"><span class="toc_label">1</span>Linked List</a></li>
 <ul>
-<li><a href="#Understanding Insertion Sort"><span class="toc_label">1.1</span>Understanding Insertion Sort</a></li>
-<li><a href="#Code Implementation"><span class="toc_label">1.2</span>Code Implementation</a></li>
+<li><a href="#Detecting a Loop"><span class="toc_label">1.1</span>Detecting a Loop</a></li>
+<li><a href="#Finding the Start of the Loop"><span class="toc_label">1.2</span>Finding the Start of the Loop</a>
+</li>
+<li><a href="#Algorithm Explanation"><span class="toc_label">1.3</span>Algorithm Explanation</a></li>
+<li><a href="#Code Implementation"><span class="toc_label">1.4</span>Code Implementation</a></li>
 </ul>
 </ul>
 </div>
@@ -1294,38 +1291,10 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<div id="Insertion Sort"></div><h2 id="1.-Insertion-Sort">1. Insertion Sort<a class="anchor-link" href="#1.-Insertion-Sort">¶</a></h2><p>Insertion sort is an in-place comparison-based algorithm. In the best case scenario, in which the array is nearly-sorted, it has <span style="font-size: 90% !important">$O(N)$</span> time complexity. In the worst case scenario, in which the array is reserve-sorted, it has <span style="font-size: 90% !important">$O(N^2)$</span> time complexity, according to <a href="#fig-1">figure (1)</a>. It has the following pros and cons:</p>
-<div><hr/></div><p><a id="pros"></a></p>
-<p><strong>Pros</strong></p>
-<ol>
-<li>When array size is small, insertion sort is faster than divide-and-conquer algorithms (quicksort, mergesort, heapsort), because they have extra overhead from the recursive function calls.</li>
-<li>If data is almost sorted, it can be very fast, approaching <span style="font-size: 90% !important">$O(N)$</span> time complexity</li>
-<li>In-place; i.e., only requires a constant amount of <span style="font-size: 90% !important">$O(1)$</span> of additional memory space</li>
-<li>More efficient in practice than most other simple quadratic <span style="font-size: 90% !important">$O(N^2)$</span>  algorithms such as selection or bubble sort.</li>
-<li>Simple and easy to implement</li>
-</ol>
-<p><a id="cons"></a></p>
-<p><strong>Cons</strong></p>
-<ol>
-<li>Bad for large data sets due to its quadratic nature <span style="font-size: 90% !important">$O(N^2)$</span>. </li>
-<li>Writes more than selection sort <span style="font-size: 90% !important">$O(1)$</span>, whereas insertion is <span style="font-size: 90% !important">$O(N^2)$</span>. </li>
-</ol>
-<div><hr/></div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div id="Understanding Insertion Sort"></div><h3 id="1.1.-Understanding-Insertion-Sort">1.1. Understanding Insertion Sort<a class="anchor-link" href="#1.1.-Understanding-Insertion-Sort">¶</a></h3><p>Insertion sort works in a similar way that you sort playing cards in your hands. The algorithm searchs an array sequentially, and elements in the unsorted sub-list is inserted into the sorted sub-list. Similar to selection sort, the algorithm divides the list into two parts:</p>
-<ol class="rounded-list" style="margin-bottom: 20px !important; margin-top: 20px! important;">
-<li><p>The sub-list which is already sorted.</p></li>
-<li><p>Remaining sub-list which is unsorted.</p></li>
-</ol><p>An element which is to be 'inserted' in this sorted sub-list, has to find its appropriate position to be inserted, by comparing itself to its predecessor. Hence the name, insertion sort. Note that <strong>insertion sort is very similar to selection sort</strong>.</p>
-<p>Let's dive into the illustrations for better understanding of insertion sort. Imagine that you want to sort the books shown in <a href="#fig-2">figure (2)</a> in ascending order of sizes.</p>
-<div class="row full_screen_margin_50 mobile_responsive_plot_full_width" id="fig-2" style="margin-top: 15px;">
-<div class="col"><img src="jupyter_images/sorting_books_1.png"/></div>
-<div class="col-12"><p class="image-description">Figure 2: Books to sort</p></div>
+<div id="Linked List"></div><h2 id="1.-Linked-List">1. Linked List<a class="anchor-link" href="#1.-Linked-List">¶</a></h2><p>A linked list would normally have a start and an end. The first node pointing to the second node, the second node pointing to the third node, etc. The last element in the linked list points to null, but nothing points to the first element in the linked list.</p>
+<div class="row" id="figure-1" style="margin-top: 15px;">
+<div class="col"><img src="jupyter_images/normal_linked_list.png"/></div>
+<div class="col-12"><p class="image-description">Figure 1: Typical linked list</p></div>
 </div>
 </div>
 </div>
@@ -1333,134 +1302,45 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<div><hr/></div><p><strong>1st Iteration</strong></p>
-<p>Insertion sort divides a list into sorted & unsorted sublists. The grey divider represents the split between sorted (left) vs unsorted (right) array. At the beginning, nothing is sorted. We move the divider one index to the right.</p>
-<div class="row" id="fig-3" style="margin-top: 15px;">
-<div class="col"><img src="jupyter_images/insertion_all_1.png"/></div>
-<div class="col-12"><p class="image-description">Figure 3: Insertion sort 1</p></div>
-</div><div><hr/></div><p><strong>2nd Iteration</strong></p>
-<p>We compare book 2 (left) and book 6 (right) adjacent to the grey divider. If left < right, which means that the books are already sorted, move the grey divider one index to the right. Anything on the left side of the divider is sorted. Anything on the right side of the divider is unsorted, and will be "inserted" into the appropriate index of the sorted sub-list.</p>
-<div class="row" id="fig-4">
-<div class="col-md-6 col-sm-12">
-<div class="col-12"><img src="jupyter_images/insertion_4.png"/></div>
+<div id="Detecting a Loop"></div><h3 id="1.1.-Detecting-a-Loop">1.1. Detecting a Loop<a class="anchor-link" href="#1.1.-Detecting-a-Loop">¶</a></h3><p>How about when there’s a loop inside a list? In this post, detecting a loop inside a list, and detecting the start of the loop will be discussed. Consider the following linked list in <a href="#figure-2">Figure (2)</a>.</p>
+<div class="row give-margin-inline-big-plot mobile_responsive_plot_full_width" id="figure_2">
+<div class="col"><img src="jupyter_images/normal_linked_list_1.png"/></div>
+<div class="col-12"><p class="image-description">Figure 2: Linked list with a loop</p></div>
+</div><p>Detecting a loop inside a linked list is the first step. There are two pointers: a slower pointer ‘S’ and a faster pointer ‘F’ will be used to detect a loop.</p>
+<p>The slower pointer will be moving one node at a time whereas the faster pointer will be moving two nodes at a time. A linked list without a loop would never have two pointers pointing to the same node since the faster pointer is always ahead of slower pointer and the distance between the two pointers will always be increasing every time the pointers move. This is Floyd’s Cycle-finding algorithm, and it is also called the “tortoise and the hare algorithm”. (The faster pointer is a hare, and the slower pointer is a tortoise.) Therefore, if the two pointers wind up pointing to the same node, it implies that there is a loop inside a list.</p>
+<p>This is the strategy to detect a loop inside a list. The following is the illustration of the two pointers moving and winding up pointing to the same node.</p>
+<div><hr/></div><p><strong>Detecting a Loop Illustration</strong></p>
+<div class="row give-margin-inline-big-plot mobile_responsive_plot_full_width" id="figure-3" style="margin-top: 15px;">
+<div class="col"><img src="jupyter_images/detect_1.png"/></div>
+<div class="col-12"><p class="image-description">Figure 3: Loop detection 1</p></div>
 </div>
-<div class="col-md-6 col-sm-12">
-<div class="col-12"><img src="jupyter_images/insertion_5.png"/></div>
+<div class="row give-margin-inline-big-plot mobile_responsive_plot_full_width" id="figure-4" style="margin-top: 15px;">
+<div class="col"><img src="jupyter_images/detect_2.png"/></div>
+<div class="col-12"><p class="image-description">Figure 4: Loop detection 2</p></div>
 </div>
-<div class="col-12"><p class="image-description">Figure 4: Insertion sort 2</p></div>
-</div><div><hr/></div><p><strong>3rd Iteration</strong></p>
-<p>We compare book 6 (left) and book 1 (right) adjacent to the grey divider. It turned out that the left item is greater than the right item. We take out the current unsorted item (right, book 1) and briefly keep it in the temporary storage (the hand icon), until it finds the appropriate index to be inserted.</p>
-<div class="row" id="fig-5">
-<div class="col-md-6 col-sm-12">
-<div class="col-12"><img src="jupyter_images/insertion_6.png"/></div>
+<div class="row give-margin-inline-big-plot mobile_responsive_plot_full_width" id="figure-5" style="margin-top: 15px;">
+<div class="col"><img src="jupyter_images/detect_3.png"/></div>
+<div class="col-12"><p class="image-description">Figure 5: Loop detection 3</p></div>
 </div>
-<div class="col-md-6 col-sm-12">
-<div class="col-12"><img src="jupyter_images/insertion_7.png"/></div>
+<div class="row give-margin-inline-big-plot mobile_responsive_plot_full_width" id="figure-6" style="margin-top: 15px;">
+<div class="col"><img src="jupyter_images/detect_4.png"/></div>
+<div class="col-12"><p class="image-description">Figure 6: Loop detection 4</p></div>
 </div>
-<div class="col-12"><p class="image-description">Figure 5: Insertion sort 3</p></div>
-</div><p>The books on the left side of the divider shifts to the right, until the current block (book 1) in the temporary storage finds its right position.</p>
-<div class="row" id="fig-6">
-<div class="col-md-6 col-sm-12">
-<div class="col-12"><img src="jupyter_images/insertion_8.png"/></div>
+<div class="row give-margin-inline-big-plot mobile_responsive_plot_full_width" id="figure-7" style="margin-top: 15px;">
+<div class="col"><img src="jupyter_images/detect_5.png"/></div>
+<div class="col-12"><p class="image-description">Figure 7: Loop detection 5</p></div>
 </div>
-<div class="col-md-6 col-sm-12">
-<div class="col-12"><img src="jupyter_images/insertion_9.png"/></div>
+<div class="row give-margin-inline-big-plot mobile_responsive_plot_full_width" id="figure-8" style="margin-top: 15px;">
+<div class="col"><img src="jupyter_images/detect_6.png"/></div>
+<div class="col-12"><p class="image-description">Figure 8: Loop detection 6</p></div>
 </div>
-<div class="col-12"><p class="image-description">Figure 6: Insertion sort 4</p></div>
-</div><p>Once the current block's (book 1's) appropriate index is found, the block is inserted into that index. Once the left side is sorted again, move the grey divider one index to the right.</p>
-<div class="row" id="fig-7">
-<div class="col-md-6 col-sm-12">
-<div class="col-12"><img src="jupyter_images/insertion_10.png"/></div>
-</div>
-<div class="col-md-6 col-sm-12">
-<div class="col-12"><img src="jupyter_images/insertion_11.png"/></div>
-</div>
-<div class="col-12"><p class="image-description">Figure 7: Insertion sort 5</p></div>
-</div><div><hr/></div><p><strong>4th Iteration</strong></p>
-<p>We repeat the same steps from above.</p>
-<div class="row" id="fig-8">
-<div class="col-md-6 col-sm-12">
-<div class="col-12"><img src="jupyter_images/insertion_12.png"/></div>
-</div>
-<div class="col-md-6 col-sm-12">
-<div class="col-12"><img src="jupyter_images/insertion_13.png"/></div>
-</div>
-<div class="col-12"><p class="image-description">Figure 8: Insertion sort 6</p></div>
-</div><div class="row" id="fig-9">
-<div class="col-md-6 col-sm-12">
-<div class="col-12"><img src="jupyter_images/insertion_14.png"/></div>
-</div>
-<div class="col-md-6 col-sm-12">
-<div class="col-12"><img src="jupyter_images/insertion_15.png"/></div>
-</div>
-<div class="col-12"><p class="image-description">Figure 9: Insertion sort 7</p></div>
-</div><div class="row" id="fig-10">
-<div class="col-md-6 col-sm-12">
-<div class="col-12"><img src="jupyter_images/insertion_16.png"/></div>
-</div>
-<div class="col-12"><p class="image-description">Figure 10: Insertion sort 8</p></div>
-</div><div><hr/></div><p><strong>5th Iteration</strong></p>
-<div class="row" id="fig-11">
-<div class="col-md-6 col-sm-12">
-<div class="col-12"><img src="jupyter_images/insertion_17.png"/></div>
-</div>
-<div class="col-md-6 col-sm-12">
-<div class="col-12"><img src="jupyter_images/insertion_18.png"/></div>
-</div>
-<div class="col-12"><p class="image-description">Figure 11: Insertion sort 9</p></div>
-</div><div class="row" id="fig-12">
-<div class="col-md-6 col-sm-12">
-<div class="col-12"><img src="jupyter_images/insertion_19.png"/></div>
-</div>
-<div class="col-md-6 col-sm-12">
-<div class="col-12"><img src="jupyter_images/insertion_20.png"/></div>
-</div>
-<div class="col-12"><p class="image-description">Figure 12: Insertion sort 10</p></div>
-</div><div class="row" id="fig-13">
-<div class="col-md-6 col-sm-12">
-<div class="col-12"><img src="jupyter_images/insertion_21.png"/></div>
-</div>
-<div class="col-md-6 col-sm-12">
-<div class="col-12"><img src="jupyter_images/insertion_22.png"/></div>
-</div>
-<div class="col-12"><p class="image-description">Figure 13: Insertion sort 11</p></div>
-</div><div><hr/></div><p><strong>6th Iteration</strong></p>
-<div class="row" id="fig-14">
-<div class="col-md-6 col-sm-12">
-<div class="col-12"><img src="jupyter_images/insertion_23.png"/></div>
-</div>
-<div class="col-md-6 col-sm-12">
-<div class="col-12"><img src="jupyter_images/insertion_24.png"/></div>
-</div>
-<div class="col-12"><p class="image-description">Figure 14: Insertion sort 12</p></div>
-</div><div class="row" id="fig-15">
-<div class="col-md-6 col-sm-12">
-<div class="col-12"><img src="jupyter_images/insertion_25.png"/></div>
-</div>
-<div class="col-md-6 col-sm-12">
-<div class="col-12"><img src="jupyter_images/insertion_26.png"/></div>
-</div>
-<div class="col-12"><p class="image-description">Figure 15: Insertion sort 13</p></div>
-</div><p>The grey divider reached the end and the books are now sorted.</p>
-<div class="row" id="fig-16">
-<div class="col-md-6 col-sm-12">
-<div class="col-12"><img src="jupyter_images/insertion_27.png"/></div>
-</div>
-<div class="col-md-6 col-sm-12">
-<div class="col-12"><img src="jupyter_images/insertion_28.png"/></div>
-</div>
-<div class="col-12"><p class="image-description">Figure 16: Insertion sort 14</p></div>
-</div><div><hr/></div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div style="margin-top: -15px"></div><p><a href="#fig-17">Figure (17)</a> is the gif represention of the insertion sort algorithm described above. Notice that the left side of the grey divider is a sorted sub-list, and right side of the divider is an unsorted sub-list. At the last iteration, the grey wall is at the end of the books, indicating the fact that all books are now sorted in an ascending order of sizes.</p>
-<div class="row full_screen_margin_60 mobile_responsive_plot_full_width" id="fig-17" style="margin-top: -10px;">
-<div class="col"><img src="jupyter_images/insertion_sort.gif"/></div>
-<div class="col-12"><p class="image-description">Figure 17: Insertion sort gif</p></div>
+<div class="row give-margin-inline-big-plot mobile_responsive_plot_full_width" id="figure-9" style="margin-top: 15px;">
+<div class="col"><img src="jupyter_images/detect_7.png"/></div>
+<div class="col-12"><p class="image-description">Figure 9: Loop detection 7</p></div>
+</div><div><hr/></div><p><a href="#figure-10">Figure (10)</a> is the gif represention of the Floyd's Cycle-finding algorithm described above. Note that the faster pointer moves two nodes at a time whereas the slower pointer moves one node at a time. You can see that both pointers pointed to the node 3, which implies that this linked list has a loop inside itself.</p>
+<div class="row full_screen_margin_90 mobile_responsive_plot_full_width" id="figure-10" style="margin-top: -10px;">
+<div class="col"><img src="jupyter_images/blog_post_3_part1.gif"/></div>
+<div class="col-12"><p class="image-description">Figure 10: Loop detection gif</p></div>
 </div>
 </div>
 </div>
@@ -1468,49 +1348,130 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<div id="Code Implementation"></div><h3 id="1.2.-Code-Implementation">1.2. Code Implementation<a class="anchor-link" href="#1.2.-Code-Implementation">¶</a></h3>
+<div id="Finding the Start of the Loop"></div><h3 id="1.2.-Finding-the-Start-of-the-Loop">1.2. Finding the Start of the Loop<a class="anchor-link" href="#1.2.-Finding-the-Start-of-the-Loop">¶</a></h3><p>The next step is to figure out the <strong>start</strong> of the loop. For this step, the faster pointer stays pointing at the same node continuing from the previous step, and the slower pointer points to the starting node of the list. Then both pointers move one node at a time until they meet. Once the pointers meet or point to the same node, then that particular node is the <strong>start</strong> of the loop.</p>
+<div><hr/></div><p><strong>Finding the start of the Loop Illustration</strong></p>
+<div class="row give-margin-inline-big-plot mobile_responsive_plot_full_width" id="figure-11" style="margin-top: 15px;">
+<div class="col"><img src="jupyter_images/start_1.png"/></div>
+<div class="col-12"><p class="image-description">Figure 11: Finding start 1</p></div>
+</div>
+<div class="row give-margin-inline-big-plot mobile_responsive_plot_full_width" id="figure-12" style="margin-top: 15px;">
+<div class="col"><img src="jupyter_images/start_2.png"/></div>
+<div class="col-12"><p class="image-description">Figure 12: Finding start 2</p></div>
+</div>
+<div class="row give-margin-inline-big-plot mobile_responsive_plot_full_width" id="figure-13" style="margin-top: 15px;">
+<div class="col"><img src="jupyter_images/start_3.png"/></div>
+<div class="col-12"><p class="image-description">Figure 13: Finding start 3</p></div>
+</div>
+<div class="row give-margin-inline-big-plot mobile_responsive_plot_full_width" id="figure-14" style="margin-top: 15px;">
+<div class="col"><img src="jupyter_images/start_4.png"/></div>
+<div class="col-12"><p class="image-description">Figure 14: Finding start 4</p></div>
+</div>
+<div class="row give-margin-inline-big-plot mobile_responsive_plot_full_width" id="figure-15" style="margin-top: 15px;">
+<div class="col"><img src="jupyter_images/start_5.png"/></div>
+<div class="col-12"><p class="image-description">Figure 15: Finding start 5</p></div>
+</div>
+<div class="row give-margin-inline-big-plot mobile_responsive_plot_full_width" id="figure-16" style="margin-top: 15px;">
+<div class="col"><img src="jupyter_images/start_6.png"/></div>
+<div class="col-12"><p class="image-description">Figure 16: Finding start 6</p></div>
+</div><div><hr/></div><p><a href="#figure-17">Figure (17)</a> is the gif represention of finding the start of the loop as described above. Note that the faster pointer stays at the same node from <a href="#figure-9">Figure (9)</a> and the slower pointer starts from the very first node of the list. Both of the pointers move one node at a time and they meet at the start of the loop.</p>
+<div class="row full_screen_margin_90 mobile_responsive_plot_full_width" id="figure-17" style="margin-top: -10px;">
+<div class="col"><img src="jupyter_images/blog_post_3_part2.gif"/></div>
+<div class="col-12"><p class="image-description">Figure 17: Finding start gif</p></div>
+</div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<div id="Algorithm Explanation"></div><h3 id="1.3.-Algorithm-Explanation">1.3. Algorithm Explanation<a class="anchor-link" href="#1.3.-Algorithm-Explanation">¶</a></h3><p>How does this algorithm work? Let <em>l</em> be the length of the loop, and <em>m</em> be the distance between the start of the loop and the very first node of the list.</p>
+<div><hr/></div><p><strong><em>l</em> and <em>m</em> Illustration</strong></p>
+<p>In the following <a href="#figure-18">diagram</a>, <em>l</em> is 5 since 5 nodes are forming a loop and <em>m</em> is 4 since the distance between node 6 and node 7 is 4.</p>
+<div class="row give-margin-inline-big-plot mobile_responsive_plot_full_width" id="figure-18" style="margin-top: 15px;">
+<div class="col"><img src="jupyter_images/m_l.png"/></div>
+<div class="col-12"><p class="image-description">Figure 18: Algorithm explanation 1</p></div>
+</div><div><hr/></div><p><strong><em>k</em> Illustration</strong></p>
+<p>Let <em>k</em> be the distance between the start of the loop and the node that was pointed by both pointers while detecting the loop. Recall that in the first step (Floyd’s cycle-finding algorithm), both pointers met at the node 3. Therefore, in the following <a href="#figure-19">diagram</a>, <em>k</em> is 1 since the distance between the node 7 and the node 3 is 1.</p>
+<div class="row give-margin-inline-big-plot mobile_responsive_plot_full_width" id="figure-19" style="margin-top: 15px;">
+<div class="col"><img src="jupyter_images/k.png"/></div>
+<div class="col-12"><p class="image-description">Figure 19: Algorithm explanation 2</p></div>
+</div><div><hr/></div><p>Using these three variables, the distance traveled by the slower pointer is illustrated as the following:</p>
+<div style="font-size: 1rem;">
+$$ Distance\_S = m + p * l + k \tag{1}$$
+</div><p>Since the pointer traveled from the start of the list, entered the loop and looped p times, and <em>k</em> amount since that is the end of the travel.</p>
+<div><hr/></div><p>Similarly, the distance traveled by the faster pointer is illustrated as the following:</p>
+<div style="font-size: 1rem;">
+$$ Distance\_F = m + q * l + k \tag{2}$$
+</div><p>Note that p is less than q since the speed of the faster pointer is faster than that of the slower pointer and therefore the faster pointer travels more than the slower pointer.</p>
+<div><hr/></div><p>Since the faster pointer traveled twice as fast as the slower pointer, the distance traveled by the faster pointer is as twice as the distance traveled by the slower pointer as well.</p>
+<div style="font-size: 1rem;">
+$$ Distance\_F = Distance\_S * 2 \tag{3}$$
+</div><div style="font-size: 1rem;">
+$$ m + q*l + k = 2*(m + p*l + k) \tag{4}$$
+</div><p>By simplifying the above equation, it is equivalent to the following:</p>
+<div style="font-size: 1rem;">
+$$ m + k = (q – 2p)*l \tag{5}$$
+</div><div><hr/></div><p>Which implies  that <em>m</em> + <em>k</em> is a multiple of <em>l</em>. Note that (q - 2p) will be replaced with x.</p>
+<div style="font-size: 1rem;">
+$$ m + k = x * l \tag{6}$$
+</div><div style="font-size: 1rem;">
+$$ m = x * l  –  k \tag{7}$$
+</div><p>Hence, by the time the slower pointer entered the loop and traveled the distance of <em>m</em>, the faster pointer had also traveled the distance of <em>m</em>, or x * <em>l</em> – <em>k</em> since both pointers are moving at the same pace. Since <em>m</em> + <em>k</em> is a multiple of <em>l</em> and the faster pointer started from <em>k</em>, both pointers meet at the start of the loop.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div id="Code Implementation"></div><h3 id="1.4.-Code-Implementation">1.4. Code Implementation<a class="anchor-link" href="#1.4.-Code-Implementation">¶</a></h3><div><br/></div>
+<div class="solution_panel">
+<div class="solution_title">
+<p class="solution_title_string">Source Code in Python</p>
+<ul class="nav navbar-right panel_toolbox">
+<li><a class="collapse-link"><i class="fa fa-chevron-down"></i></a></li>
+</ul>
+<div class="clearfix"></div>
+</div>
+<div class="solution_content" style="display:block">
 <pre>
-    <code class="language-java">
-import java.util.Arrays;
-//@author: Violet Oh
+            <code class="language-python">
+               # Author: Violet Oh
+                Class ListNode:
+                    def __init__(self, x):
+                        self.val = x
+                        self.next = None
+                Class LinkedList:
+                    def hasCycle(self, head:ListNode) -> bool:
+                        slow = fast = head
+                        while fast and fast.next:
+                            slow = slow.next
+                            fast = fast.next.next
+                            if fast == slow:               
+                                return True
+                        return False
 
-public class Insertion_Sort {
-    public static void main(String[] args) {
-        int[] array = {2, 6, 1, 5, 3, 4}; // The array we discussed.
-        System.out.println(Arrays.toString(array));
-        InsertionSort(array);
-        System.out.println(Arrays.toString(array));
-    }
-    public static void InsertionSort(int[] array) {
-        for(int i = 1; i < array.length; ++i)   // Starts from the second element.
-        {
-            int temp = array[i];    // Save the second element to another variable, "temp".
+                # Create a linked list
+                linked_list = LinkedList()
+                linked_list.push(4)
+                linked_list.push(9)
+                linked_list.push(8)
+                linked_list.push(3)
+                linked_list.push(7)
+                linked_list.push(5)
+                linked_list.push(2)
+                linked_list.push(1)
+                linked_list.push(6)
+                answer = linked_list.hasCycle(linked_list.head)
+                print(answer)
 
-            int j;
-            for(j = i; j > 0; --j)  // Shifts the elements until they are in order.
-            {
-                if(array[j-1] > temp)   // Checks if the first element is NOT SMALLER than the second element.
-                {
-                    array[j] = array[j-1];      // If so, the first element gets shifted to right (index + 1).
-                }
-                else
-                {
-                    break;  // If the first element is SMALLER than the second element already, nothing happens.
-                }
-            }
-            array[j] = temp;    // The proper position for the element that was being compared with the element right before this.
-            System.out.println(Arrays.toString(array)); // Print it out to see the changes.
-        }
-    }
-}
-    </code>
-</pre>
+                # Make a loop inside the list
+                linked_list.head.next.next.next.next.next.next.next.next.next = linked_list.head.next.next.next.next
+                answer = linked_list.hasCycle(linked_list.head)
+                print(answer)
+            </code>
+        </pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1522,16 +1483,59 @@ public class Insertion_Sort {
 <div class="output_area" style="margin: 0 !important;">
 <div class="prompt output_prompt" style="width: 69.53px;">Out[24]:</div>
 <div class="output_text output_subarea output_execute_result">
-<pre>[2, 6, 1, 5, 3, 4]
-[2, 6, 1, 5, 3, 4]
-[1, 2, 6, 5, 3, 4]
-[1, 2, 5, 6, 3, 4]
-[1, 2, 3, 5, 6, 4]
-[1, 2, 3, 4, 5, 6]
-[1, 2, 3, 4, 5, 6]
+<pre>False
+True
 </pre>
 </div>
 </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div><br/></div>
+<div class="solution_panel">
+<div class="solution_title">
+<p class="solution_title_string">Source Code in Java</p>
+<ul class="nav navbar-right panel_toolbox">
+<li><a class="collapse-link"><i class="fa fa-chevron-down"></i></a></li>
+</ul>
+<div class="clearfix"></div>
+</div>
+<div class="solution_content" style="display:block">
+<pre>
+            <code class="language-java">
+               @author: Violet Oh 
+                class ListNode {
+                      int val;
+                      ListNode next;
+                      ListNode(int x) {
+                          val = x;
+                          next = null;
+                      }
+                  }
+
+                public class LinkedList {
+                    public boolean hasCycle(ListNode head) {
+                        if(head==null) return false;
+                        ListNode walker = head;
+                        ListNode runner = head;
+                        while(runner.next!=null && runner.next.next!=null) {
+                            walker = walker.next;
+                            runner = runner.next.next;
+                            if(walker==runner) 
+                                return true;
+                        }
+                        return false;
+                    }
+                }
+
+
+            </code>
+        </pre>
 </div>
 </div>
 </div>
@@ -1570,8 +1574,7 @@ public class Insertion_Sort {
         <aside>
         <nav>
         <ul class="articles-timeline">
-            <li class="previous-article">« <a href="https://starrycode.github.io/visual-understanding-of-selection-sort-algorithm" title="Previous: Visual Understanding of Selection Sort Algorithm">Visual Understanding of Selection Sort Algorithm</a></li>
-            <li class="next-article"><a href="https://starrycode.github.io/detecting_a_loop_in_linked_lists_and_finding_the_start_of_the_loop" title="Next: Detecting a Loop in Linked Lists and Finding a Start of the Loop">Detecting a Loop in Linked Lists and Finding a Start of the Loop</a> »</li>
+            <li class="previous-article">« <a href="https://starrycode.github.io/visual-understanding-of-insertion-sort-algorithm" title="Previous: Visual Understanding of Insertion Sort Algorithm">Visual Understanding of Insertion Sort Algorithm</a></li>
         </ul>
         </nav>
         </aside>
@@ -1604,24 +1607,24 @@ public class Insertion_Sort {
         </div>
     </div>
     <div class="pop-over col-12 col-md-6 col-lg-4">
-        <div class="article-row" onclick="window.location='https://starrycode.github.io/detecting_a_loop_in_linked_lists_and_finding_the_start_of_the_loop';">
+        <div class="article-row" onclick="window.location='https://starrycode.github.io/visual-understanding-of-insertion-sort-algorithm';">
             <div class="article-cell-1">
-                <img class="article-img" src="images/featured_images/linked_list_preview.png">
+                <img class="article-img" src="images/featured_images/insertion_preview.png">
             </div>
             <div class="article-cell-2">
                 <div class="category">Algorithms</div>
-                <h2 class="">Detecting a Loop in Linked Lists and Finding a Start of the Loop</h2>
-                <p class="excerpt">Linked List is a linear data structure where elements’ data part & address part are stored separately. Each node inside a linked list is linked using pointers and addresses. If there is a loop inside a linked list, how can it be detected? And if a loop is detected, how can the start of the loop be identified?</p>
+                <h2 class="">Visual Understanding of Insertion Sort Algorithm</h2>
+                <p class="excerpt">Insertion sort is an in-place comparison-based algorithm. In the best case scenario, in which the array is nearly-sorted, it has <span style="font-size: 90% !important">$O(N)$</span> time complexity. In the worst case scenario, in which the array is reserve-sorted, it has <span style="font-size: 90% !important">$O(N^2)$</span> time complexity.</p>
                 <div class="meta">
                     <div class="meta-left">
                         <i class="fa fa-calendar index-comment-icon"></i>
-                        <span class="index-reading-time">2021-07-12</span>
+                        <span class="index-reading-time">2020-09-01</span>
                     </div>
                     <div class="meta-right">
                         <i class="far fa-clock index-comment-icon"></i>
-                        <span class="index-reading-time">10 min reading</span>
-                        <i class="fas fa-comment index-comment-icon" href="https://starrycode.github.io/detecting_a_loop_in_linked_lists_and_finding_the_start_of_the_loop#disqus_thread"></i>
-                        <a class="index-reading-time disqus-comment" href="https://starrycode.github.io/detecting_a_loop_in_linked_lists_and_finding_the_start_of_the_loop#disqus_thread"></a>
+                        <span class="index-reading-time">5 min reading</span>
+                        <i class="fas fa-comment index-comment-icon" href="https://starrycode.github.io/visual-understanding-of-insertion-sort-algorithm#disqus_thread"></i>
+                        <a class="index-reading-time disqus-comment" href="https://starrycode.github.io/visual-understanding-of-insertion-sort-algorithm#disqus_thread"></a>
                     </div>
                 </div>
             </div>
